@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import store from './store/store.js';
 import * as actions from './store/people/actions.js';
 import AutoComplete from './components/auto-complete/AutoComplete.jsx';
-import DataList from './components/auto-complete/DataList.jsx';
-import StatelessAutoComplete from './components/auto-complete/StateLessAutoComplete.jsx';
+import DataList from './components/data-list/DataList.jsx';
+import DumbComplete from './components/dumb-complete/DumbComplete.jsx';
 
 
 store.dispatch(actions.init([
@@ -56,7 +56,7 @@ class MyComponent extends React.Component {
 
                 <hr />
 
-                <StatelessAutoComplete
+                <DumbComplete
                     options={this.state.filtered}
                     value={this.state.q}
                     onChange={ e=> this.props.store.dispatch(actions.findPeople(e.target.value)) }

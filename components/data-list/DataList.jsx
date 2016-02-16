@@ -1,6 +1,4 @@
 import React from 'react';
-// import style from './auto-complete.css';
-// import classNames from 'classnames';
 
 
 function uniqId() {
