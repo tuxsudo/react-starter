@@ -75,6 +75,12 @@ module.exports = {
         inline: true,
         progress: true,
         compress: true
+    },
+
+    externals: {
+        'cheerio': 'window',
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
     }
 
 };

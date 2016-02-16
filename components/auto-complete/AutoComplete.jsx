@@ -1,29 +1,8 @@
 import React from 'react';
 import style from './auto-complete.css';
 import classNames from 'classnames';
-
-function throttle(fn) {
-    let time;
-
-    return function(...args) {
-        if(!time) {
-            time = setTimeout( () => {
-                fn.apply(this, args);
-                time = false;
-            }, 300);
-        }
-    }
-}
-
-function strongify(full, part) {
-    let pattern = new RegExp(`(${part})`, 'ig'),
-        parts = full.split(pattern);
-
-    return parts.map( (p, i) => pattern.test(p)
-        ? <strong key={i}>{part}</strong>
-        : p
-    );
-}
+import strongify from '../../lib/strongify.js';
+import throttle from '../../lib/throttle.js';
 
 
 export default class AutoComplete extends React.Component {
@@ -121,7 +100,8 @@ export default class AutoComplete extends React.Component {
                     type="text"
                     ref="input"
                     onKeyDown={ this.handleMetaKeys.bind(this) }
-                    onChange={ throttle(this.handleValueChanges.bind(this)) }
+                    // onChange={ throttle(this.handleValueChanges.bind(this)) }
+                    onChange={ this.handleValueChanges.bind(this) }
                     defaultValue={ this.props.value }
                 />
                 <div
