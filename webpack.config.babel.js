@@ -2,6 +2,7 @@ import path from 'path';
 import cssnano from 'cssnano';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import precss from 'precss';
+import webpack from 'webpack';
 
 export default {
     entry: "./app.js",
@@ -34,6 +35,17 @@ export default {
     },
 
     plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                warnings: false
+            }
+        }),
         new ExtractTextPlugin("style.css")
     ],
 

@@ -58,6 +58,4 @@ function buildPage(innerHTML) {
 
 var PORT = process.env.PORT || 8080;
 
-app.listen(PORT, function() {
-    console.log('Running on port' + PORT); // eslint-disable-line
-})
+app.listen(PORT, () => console.log('Running on port ' + PORT)); // eslint-disable-line

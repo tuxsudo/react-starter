@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --progress --colors",
     "start": "npm run build && node server.bundle.js",
-    "build:client": "webpack",
-    "build:server": "webpack --config webpack.server.config.js",
+    "build:client": "webpack --quiet",
+    "build:server": "webpack --quiet --config webpack.server.config.js",
     "build": "npm run build:client && npm run build:server"
   },
   "author": "",
