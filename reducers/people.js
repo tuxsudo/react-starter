@@ -1,6 +1,9 @@
-import {INIT_PEOPLE, FIND_PEOPLE, SELECT_PERSON} from './constants.js';
+export const INIT_PEOPLE = Symbol('INIT_PEOPLE');
+export const FIND_PEOPLE = Symbol('FIND_PEOPLE');
+export const SELECT_PERSON = Symbol('SELECT_PERSON');
 
-function people( state={ q:'', all: [], filtered:[] }, action) {
+
+export default function people( state = { q:'', all: [], filtered:[] }, action) {
     switch(action.type) {
         case INIT_PEOPLE:
             return {
@@ -29,7 +32,3 @@ function people( state={ q:'', all: [], filtered:[] }, action) {
             return state;
     }
 }
-
-
-
-export default people;

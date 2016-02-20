@@ -1,12 +1,12 @@
-var cssnano = require('cssnano');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var precss =  require('precss');
+import path from 'path';
+import cssnano from 'cssnano';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import precss from 'precss';
 
-
-module.exports = {
+export default {
     entry: "./app.js",
     output: {
-        path: __dirname,
+        path: path.join(__dirname, 'public'),
         filename: "bundle.js"
     },
     module: {
@@ -18,12 +18,6 @@ module.exports = {
                     "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader",
                     "sass-loader"
                 )
-                // loaders : [
-                //     'style-loader',
-                //     'css-loader',
-                //     'postcss-loader'
-                //     // 'sass-loader'
-                // ]
             },
 
             {
@@ -40,12 +34,8 @@ module.exports = {
     },
 
     plugins: [
-        new ExtractTextPlugin("styles-out.css")
+        new ExtractTextPlugin("style.css")
     ],
-
-    // autoprefixer: {
-    //     browsers : ['last 2 versions']
-    // }
 
     cssLoader: {
         modules: true
@@ -70,17 +60,12 @@ module.exports = {
     ],
 
     devServer: {
+        contentBase: path.join(__dirname, 'public'),
         historyApiFallback: true,
         hot: false,
         inline: true,
         progress: true,
         compress: true
-    },
-
-    externals: {
-        'cheerio': 'window',
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
     }
 
 };

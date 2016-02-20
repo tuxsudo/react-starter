@@ -1,6 +1,4 @@
-import React from 'react';
 import style from './style.css';
-import classNames from 'classnames';
 
 
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import style from './auto-complete.css';
 import classNames from 'classnames';
-import strongify from '../../lib/strongify.js';
-import throttle from '../../lib/throttle.js';
+import strongify from './util/strongify.js';
+
+// import throttle from '../../lib/throttle.js';
 
 
 export default class AutoComplete extends React.Component {
@@ -10,7 +11,6 @@ export default class AutoComplete extends React.Component {
     constructor(props) {
         super(props);
         this.state = { options: [], highlight: -1, isactive: false, value: this.props.value||'' };
-        this.timer = null;
     }
 
     handleValueChanges(event) {
@@ -28,27 +28,32 @@ export default class AutoComplete extends React.Component {
     handleMetaKeys(event) {
 
         switch(event.keyCode || event.which) {
-            case 40: // down
+            // down
+            case 40:
                 this.highlight( this.state.highlight+1 );
                 event.preventDefault();
                 break;
 
-            case 38: //up
+            //up
+            case 38:
                 this.highlight( this.state.highlight-1 );
                 event.preventDefault();
                 break;
+
+            //enter
+            case 13: {
+                let selected = this.refs[`option-${this.state.highlight}`];
+                this.select( selected && (selected.dataset.value || selected.textContent) || this.refs.input.value);
+                event.preventDefault();
+                break;
+            }
 
             case 27: //escape
                 this.reset();
                 event.preventDefault();
                 break;
-
-            case 13: //enter
-                let selected = this.refs[`option-${this.state.highlight}`];
-                this.select( selected && (selected.dataset.value || selected.textContent) || this.refs.input.value);
-                event.preventDefault();
-                break;
         }
+
     }
 
     reset() {
@@ -82,12 +87,13 @@ export default class AutoComplete extends React.Component {
                         [ style['option-item'] ]: true,
                         [ style['option-item--selected'] ] : i === this.state.highlight
                     })}
-                    onMouseOver={()=>this.setState({ highlight: i})}
-                    onClick={ e => this.select(o.value || o) }
                     data-value={o.value || o}
+                    key={i}
+                    onClick={ e => this.select(o.value || o) }
+                    onMouseOver={ () => this.setState({ highlight: i})}
                     ref={`option-${i}`}
-                    key={i}>
-                    { strongify(o.text||o, this.state.value ) }
+                >
+                    {strongify(o.text||o, this.state.value )}
                 </div>
             ));
 

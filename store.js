@@ -1,8 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 
-// import all your reducers here.
-import people from './people/reducers.js';
-
+import people from './reducers/people.js';
 
 let store = combineReducers({ people })
 
