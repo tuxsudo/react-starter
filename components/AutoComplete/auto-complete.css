@@ -34,6 +34,6 @@
 
     &--selected {
         @inherit .option-item;
-        background: green;
+        background: #bada55;
     }
 }

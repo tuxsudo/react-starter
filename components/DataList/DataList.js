@@ -2,7 +2,7 @@ import React from 'react';
 
 
 function uniqId() {
-    return "dl-".concat( btoa((new Date).toISOString()) );
+    return "dl-".concat( (new Date).toISOString() );
 }
 
 
