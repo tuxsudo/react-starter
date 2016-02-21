@@ -1,10 +1,9 @@
-var fs = require('fs');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var webpack = require('webpack');
-var tmpdir = require('os').tmpdir();
+import fs from 'fs';
+import path from 'path';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-module.exports = {
+
+export default {
 
     entry: path.resolve(__dirname, 'server.js'),
 
@@ -16,14 +15,14 @@ module.exports = {
 
     // keep node_module paths out of the bundle
     externals: fs.readdirSync(path.resolve(__dirname, 'node_modules'))
-    .concat([
-        'react-dom/server'
-    ])
-    .filter( s=> !/\.css$/.test(s) )
-    .reduce(function (ext, mod) {
-        ext[mod] = 'commonjs ' + mod
-        return ext
-    }, {}),
+        .concat([
+            'react-dom/server'
+        ])
+        .filter( s=> !/\.css$/.test(s) )
+        .reduce( (ext, mod) => ({
+                ...ext,
+                [mod]: 'commonjs ' + mod
+            }), {}),
 
     node: {
         __filename: true,
@@ -31,18 +30,7 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        }),
-        new ExtractTextPlugin(tmpdir + "style.css")
+        new ExtractTextPlugin(path.join(__dirname, "public", "style2.css"))
     ],
 
     module: {

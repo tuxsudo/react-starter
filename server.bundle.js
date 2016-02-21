@@ -1,1 +1,927 @@
-!function(e){function t(l){if(n[l])return n[l].exports;var a=n[l]={exports:{},id:l,loaded:!1};return e[l].call(a.exports,a,a.exports,t),a.loaded=!0,a.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){(function(e){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}function a(e){return(0,p.minify)(O.replace("<!--REACTAPP-->",e),{collapseWhitespace:!0,removeComments:!0,removeAttributeQuotes:!0})}Object.defineProperty(t,"__esModule",{value:!0}),t.app=void 0;var u=n(23),o=l(u),r=n(26),i=l(r),c=n(22),s=l(c),f=n(24),d=l(f),p=n(25),h=n(1),_=l(h),m=n(27),v=n(3),y=n(14),E=l(y),g=n(2),b=n(15),P=l(b),x=t.app=(0,o["default"])(),O=d["default"].readFileSync(i["default"].join(e,"public","index.html")).toString();x.use((0,s["default"])()),x.use(o["default"]["static"](i["default"].join(e,"public"),{index:!1})),x.get("*",function(e,t){(0,v.match)({routes:E["default"],location:e.url},function(e,n,l){if(e)t.status(500).send(e.message);else if(n)t.redirect(n.pathname+n.search);else if(l){var u=(0,m.renderToString)(_["default"].createElement(g.Provider,{store:P["default"]},_["default"].createElement(v.RouterContext,l)));t.send(a(u))}else t.status(404).send("Not Found")})});var C={NODE_ENV:"production"}.PORT||8080;x.listen(C,function(){return console.log("Running on port "+C)})}).call(t,"")},function(e,t){e.exports=require("react")},function(e,t){e.exports=require("react-redux")},function(e,t){e.exports=require("react-router")},function(e,t){"use strict";function n(){var e=arguments.length<=0||void 0===arguments[0]?{q:"",all:[],filtered:[]}:arguments[0],t=arguments[1];switch(t.type){case l:return{q:"",all:t.people,filtered:[]};case a:return{all:[].concat(e.all),q:t.q,filtered:t.q.length>1?e.all.filter(function(e){return~e.toLowerCase().indexOf(t.q.toLowerCase())}):[]};case u:return{all:[].concat(e.all),q:t.q,filtered:[]};default:return e}}Object.defineProperty(t,"__esModule",{value:!0}),t["default"]=n;var l=t.INIT_PEOPLE=Symbol("INIT_PEOPLE"),a=t.FIND_PEOPLE=Symbol("FIND_PEOPLE"),u=t.SELECT_PERSON=Symbol("SELECT_PERSON")},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.selectPerson=t.findPeople=t.init=void 0;var l=n(4);t.init=function(e){return{type:l.INIT_PEOPLE,people:e}},t.findPeople=function(e){return{type:l.FIND_PEOPLE,q:e}},t.selectPerson=function(e){return{type:l.SELECT_PERSON,q:e}}},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}function a(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function u(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function r(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var l=t[n];l.enumerable=l.enumerable||!1,l.configurable=!0,"value"in l&&(l.writable=!0),Object.defineProperty(e,l.key,l)}}return function(t,n,l){return n&&e(t.prototype,n),l&&e(t,l),t}}(),c=n(1),s=l(c),f=n(16),d=l(f),p=n(21),h=l(p),_=n(7),m=l(_),v=function(e){function t(e){u(this,t);var n=o(this,Object.getPrototypeOf(t).call(this,e));return n.state={options:[],highlight:-1,isactive:!1,value:n.props.value||""},n}return r(t,e),i(t,[{key:"handleValueChanges",value:function(e){var t=e.target.value,n=t.length<2?[]:this.props.options.filter(function(e){return~(e.text||e).toLowerCase().indexOf(t.toLowerCase())}).slice(0,this.props.max||1e3);this.setState({options:n,highlight:-1,isactive:!0,value:t}),this.notify()}},{key:"handleMetaKeys",value:function(e){switch(e.keyCode||e.which){case 40:this.highlight(this.state.highlight+1),e.preventDefault();break;case 38:this.highlight(this.state.highlight-1),e.preventDefault();break;case 13:var t=this.refs["option-"+this.state.highlight];this.select(t&&(t.dataset.value||t.textContent)||this.refs.input.value),e.preventDefault();break;case 27:this.reset(),e.preventDefault()}}},{key:"reset",value:function(){this.setState({options:[],highlight:-1})}},{key:"notify",value:function(){this.props.onSelect&&this.props.onSelect(this.refs.input.value)}},{key:"select",value:function(e){this.refs.input.value=e,this.refs.input.focus(),this.reset(),this.notify()}},{key:"highlight",value:function(e){e>=0&&e<this.state.options.length&&this.setState({highlight:e})}},{key:"render",value:function(){var e,t=this,n=this.state.options.map(function(e,n){var l;return s["default"].createElement("div",{className:(0,h["default"])((l={},a(l,d["default"]["option-item"],!0),a(l,d["default"]["option-item--selected"],n===t.state.highlight),l)),"data-value":e.value||e,key:n,onClick:function(n){return t.select(e.value||e)},onMouseOver:function(){return t.setState({highlight:n})},ref:"option-"+n},(0,m["default"])(e.text||e,t.state.value))});return s["default"].createElement("div",{className:d["default"]["auto-complete"],onBlur:function(){return t.setState({isactive:!1})}},s["default"].createElement("label",null,this.props.label),s["default"].createElement("input",{className:d["default"].input,placeholder:this.props.placeholder,type:"text",ref:"input",onKeyDown:this.handleMetaKeys.bind(this),onChange:this.handleValueChanges.bind(this),defaultValue:this.props.value}),s["default"].createElement("div",{className:(0,h["default"])((e={},a(e,d["default"].options,!0),a(e,d["default"]["options--active"],this.state.isactive),e))},n))}}]),t}(s["default"].Component);t["default"]=v},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var a=n(1),u=l(a);t["default"]=function(e,t){var n=new RegExp("("+t+")","ig"),l=e.split(n);return l.map(function(e,l){return n.test(e)?u["default"].createElement("strong",{key:l},t):e})}},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}function a(){return"dl-".concat((new Date).toISOString())}Object.defineProperty(t,"__esModule",{value:!0});var u=n(1),o=l(u);t["default"]=function(e){var t=e.options,n=void 0===t?[]:t,l=e.className,u=void 0===l?"":l,r=e.label,i=void 0===r?"":r,c=e.value,s=void 0===c?"":c,f=e.placeholder,d=void 0===f?"":f,p=e.onChange,h=void 0===p?function(){}:p,_=a(),m=n.map(function(e,t){return o["default"].createElement("option",{key:t,value:e.value||e},e.text||e)});return o["default"].createElement("div",{className:u},o["default"].createElement("label",null,i),o["default"].createElement("input",{defaultValue:s,list:_,onChange:h,placeholder:d,type:"text"}),o["default"].createElement("datalist",{id:_},m))}},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var a=n(1),u=l(a),o=n(17),r=l(o);t["default"]=function(e){var t=e.options.map(function(t,n){return u["default"].createElement("a",{key:n,className:r["default"]["option-item"],onClick:e.onSelect},t)});return u["default"].createElement("div",{className:r["default"]["auto-complete"]},u["default"].createElement("label",null,e.label),u["default"].createElement("input",{type:"text",placeholder:e.placeholder,onKeyDown:e.onInput,onChange:e.onChange,onFocus:e.onFocus,onBlur:e.onBlur,value:e.value}),u["default"].createElement("div",null,t))}},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var a=n(1),u=l(a),o=n(18),r=l(o);t["default"]=function(){return u["default"].createElement("header",{className:r["default"].header},"Welcome to my Website")}},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var a=n(1),u=l(a),o=n(2),r=n(3),i=n(10),c=l(i);n(20);var s=n(19),f=l(s),d=function(e){var t=e.children;return u["default"].createElement("div",{className:f["default"].app},u["default"].createElement(c["default"],null),u["default"].createElement("div",{className:f["default"].wrapper},u["default"].createElement("nav",{className:f["default"].nav},u["default"].createElement("ul",null,u["default"].createElement("li",null,u["default"].createElement(r.Link,{to:"/"},"Home")),u["default"].createElement("li",null,u["default"].createElement(r.Link,{to:"/auto-completes"},"Auto Complete Demo")))),u["default"].createElement("main",{className:f["default"].main},t)))};t["default"]=(0,o.connect)()(d)},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var a=n(1),u=l(a),o=n(2),r=n(6),i=l(r),c=n(8),s=l(c),f=n(9),d=l(f),p=n(5),h=function(e){var t=e.people,n=void 0===t?[]:t,l=e.filtered,a=void 0===l?[]:l,o=e.q,r=void 0===o?"":o,c=e.dispatch;return u["default"].createElement("div",null,u["default"].createElement(i["default"],{onSelect:console.log.bind(console),options:n,placeholder:"choose a relative...",value:"Jared"}),u["default"].createElement("hr",null),u["default"].createElement(s["default"],{onChange:function(e){return console.log(e.target.value)},options:n}),u["default"].createElement("hr",null),u["default"].createElement(d["default"],{options:a,value:r,onChange:function(e){return c((0,p.findPeople)(e.target.value))},onSelect:function(e){return c((0,p.selectPerson)(e.target.textContent))}}))};t["default"]=(0,o.connect)(function(e){var t=e.people;return{people:t.all,filtered:t.filtered,q:t.q}})(h)},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var a=n(1),u=l(a),o=n(2),r=function(){return u["default"].createElement("div",null,u["default"].createElement("h1",null,"Welcome Home"))};t["default"]=(0,o.connect)()(r)},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var a=n(1),u=l(a),o=n(3),r=n(11),i=l(r),c=n(13),s=l(c),f=n(12),d=l(f),p=u["default"].createElement(o.Route,{path:"/",component:i["default"]},u["default"].createElement(o.IndexRoute,{component:s["default"]}),u["default"].createElement(o.Route,{path:"/auto-completes",component:d["default"]}));t["default"]=p},function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var a=n(28),u=n(4),o=l(u),r=(0,a.combineReducers)({people:o["default"]});t["default"]=(0,a.createStore)(r)},function(e,t){e.exports={"auto-complete":"auto-complete__auto-complete___15LZD",input:"auto-complete__input___1QJ0K",options:"auto-complete__options___3fran","option-item":"auto-complete__option-item___3UbgG"}},function(e,t){e.exports={"auto-complete":"style__auto-complete___1GZlf",input:"style__input___25RVD",options:"style__options___1O4TA","option-item":"style__option-item___2nSRv"}},function(e,t){e.exports={header:"style__header___2XLfO"}},function(e,t){e.exports={app:"style__app___1mKhk",wrapper:"style__wrapper___2UkQX",nav:"style__nav___332Qy",main:"style__main___3-8DB"}},function(e,t){},function(e,t){e.exports=require("classnames")},function(e,t){e.exports=require("compression")},function(e,t){e.exports=require("express")},function(e,t){e.exports=require("fs")},function(e,t){e.exports=require("html-minifier")},function(e,t){e.exports=require("path")},function(e,t){e.exports=require("react-dom/server")},function(e,t){e.exports=require("redux")}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.app = undefined;
+
+	var _express = __webpack_require__(1);
+
+	var _express2 = _interopRequireDefault(_express);
+
+	var _path = __webpack_require__(2);
+
+	var _path2 = _interopRequireDefault(_path);
+
+	var _compression = __webpack_require__(3);
+
+	var _compression2 = _interopRequireDefault(_compression);
+
+	var _fs = __webpack_require__(4);
+
+	var _fs2 = _interopRequireDefault(_fs);
+
+	var _htmlMinifier = __webpack_require__(5);
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _server = __webpack_require__(7);
+
+	var _reactRouter = __webpack_require__(8);
+
+	var _routes = __webpack_require__(9);
+
+	var _routes2 = _interopRequireDefault(_routes);
+
+	var _reactRedux = __webpack_require__(11);
+
+	var _store = __webpack_require__(34);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var app = exports.app = (0, _express2.default)();
+
+	var template = _fs2.default.readFileSync(_path2.default.join(__dirname, 'public', 'index.html')).toString();
+
+	app.use((0, _compression2.default)());
+
+	app.use(_express2.default.static(_path2.default.join(__dirname, 'public'), { index: false }));
+
+	app.get('*', function (req, res) {
+	    (0, _reactRouter.match)({ routes: _routes2.default, location: req.url }, function (err, redirect, props) {
+
+	        if (err) {
+	            res.status(500).send(err.message);
+	        } else if (redirect) {
+	            res.redirect(redirect.pathname + redirect.search);
+	        } else if (props) {
+
+	            var html = (0, _server.renderToString)(_react2.default.createElement(
+	                _reactRedux.Provider,
+	                { store: _store2.default },
+	                _react2.default.createElement(_reactRouter.RouterContext, props)
+	            ));
+	            res.send(buildPage(html));
+	        } else {
+	            res.status(404).send('Not Found');
+	        }
+	    });
+	});
+
+	function buildPage(innerHTML) {
+	    return (0, _htmlMinifier.minify)(template.replace('<!--REACTAPP-->', innerHTML), {
+	        collapseWhitespace: true,
+	        removeComments: true,
+	        removeAttributeQuotes: true
+	    });
+	}
+
+	var PORT = process.env.PORT || 8080;
+
+	app.listen(PORT, function () {
+	    return console.log('Running on port ' + PORT);
+	}); // eslint-disable-line
+	/* WEBPACK VAR INJECTION */}.call(exports, ""))
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	module.exports = require("express");
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = require("path");
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = require("compression");
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	module.exports = require("fs");
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	module.exports = require("html-minifier");
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	module.exports = require("react");
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	module.exports = require("react-dom/server");
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	module.exports = require("react-router");
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(8);
+
+	var _App = __webpack_require__(10);
+
+	var _App2 = _interopRequireDefault(_App);
+
+	var _Home = __webpack_require__(21);
+
+	var _Home2 = _interopRequireDefault(_Home);
+
+	var _AutoCompletes = __webpack_require__(22);
+
+	var _AutoCompletes2 = _interopRequireDefault(_AutoCompletes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var routes = _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: '/', component: _App2.default },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/auto-completes', component: _AutoCompletes2.default })
+	);
+
+	exports.default = routes;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(11);
+
+	var _reactRouter = __webpack_require__(8);
+
+	var _SiteHeader = __webpack_require__(12);
+
+	var _SiteHeader2 = _interopRequireDefault(_SiteHeader);
+
+	__webpack_require__(17);
+
+	var _style = __webpack_require__(19);
+
+	var _style2 = _interopRequireDefault(_style);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var App = function App(_ref) {
+	    var children = _ref.children;
+	    return _react2.default.createElement(
+	        'div',
+	        { className: _style2.default.app },
+	        _react2.default.createElement(_SiteHeader2.default, null),
+	        _react2.default.createElement(
+	            'div',
+	            { className: _style2.default.wrapper },
+	            _react2.default.createElement(
+	                'nav',
+	                { className: _style2.default.nav },
+	                _react2.default.createElement(
+	                    'ul',
+	                    null,
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: '/' },
+	                            'Home'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: '/auto-completes' },
+	                            'Auto Complete Demo'
+	                        )
+	                    )
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'main',
+	                { className: _style2.default.main },
+	                children
+	            )
+	        )
+	    );
+	};
+
+	exports.default = (0, _reactRedux.connect)()(App);
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = require("react-redux");
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _style = __webpack_require__(13);
+
+	var _style2 = _interopRequireDefault(_style);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function () {
+	    return _react2.default.createElement(
+	        'header',
+	        { className: _style2.default.header },
+	        'Welcome to my Website'
+	    );
+	};
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"header":"style__header___2XLfO"};
+
+/***/ },
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 18 */,
+/* 19 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"app":"style__app___1mKhk","wrapper":"style__wrapper___2UkQX","nav":"style__nav___332Qy","main":"style__main___3-8DB"};
+
+/***/ },
+/* 20 */,
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var _reactRedux = __webpack_require__(11);
+
+	var Home = function Home() {
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Welcome Home'
+	        )
+	    );
+	};
+
+	exports.default = (0, _reactRedux.connect)()(Home);
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(11);
+
+	var _AutoComplete = __webpack_require__(23);
+
+	var _AutoComplete2 = _interopRequireDefault(_AutoComplete);
+
+	var _DataList = __webpack_require__(28);
+
+	var _DataList2 = _interopRequireDefault(_DataList);
+
+	var _DumbComplete = __webpack_require__(29);
+
+	var _DumbComplete2 = _interopRequireDefault(_DumbComplete);
+
+	var _people = __webpack_require__(32);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var App = function App(_ref) {
+	    var _ref$people = _ref.people;
+	    var people = _ref$people === undefined ? [] : _ref$people;
+	    var _ref$filtered = _ref.filtered;
+	    var filtered = _ref$filtered === undefined ? [] : _ref$filtered;
+	    var _ref$q = _ref.q;
+	    var q = _ref$q === undefined ? "" : _ref$q;
+	    var dispatch = _ref.dispatch;
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_AutoComplete2.default, {
+	            onSelect: console.log.bind(console) // eslint-disable-line
+	            , options: people,
+	            placeholder: 'choose a relative...',
+	            value: 'Jared'
+	        }),
+	        _react2.default.createElement('hr', null),
+	        _react2.default.createElement(_DataList2.default, {
+	            onChange: function onChange(e) {
+	                return console.log(e.target.value);
+	            } // eslint-disable-line
+	            , options: people
+	        }),
+	        _react2.default.createElement('hr', null),
+	        _react2.default.createElement(_DumbComplete2.default, {
+	            options: filtered,
+	            value: q,
+	            onChange: function onChange(e) {
+	                return dispatch((0, _people.findPeople)(e.target.value));
+	            },
+	            onSelect: function onSelect(e) {
+	                return dispatch((0, _people.selectPerson)(e.target.textContent));
+	            }
+	        })
+	    );
+	};
+
+	exports.default = (0, _reactRedux.connect)(function (_ref2) {
+	    var people = _ref2.people;
+	    return { people: people.all, filtered: people.filtered, q: people.q };
+	})(App);
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _autoComplete = __webpack_require__(24);
+
+	var _autoComplete2 = _interopRequireDefault(_autoComplete);
+
+	var _classnames = __webpack_require__(26);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _strongify = __webpack_require__(27);
+
+	var _strongify2 = _interopRequireDefault(_strongify);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// import throttle from '../../lib/throttle.js';
+
+	var AutoComplete = function (_React$Component) {
+	    _inherits(AutoComplete, _React$Component);
+
+	    function AutoComplete(props) {
+	        _classCallCheck(this, AutoComplete);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AutoComplete).call(this, props));
+
+	        _this.state = { options: [], highlight: -1, isactive: false, value: _this.props.value || '' };
+	        return _this;
+	    }
+
+	    _createClass(AutoComplete, [{
+	        key: 'handleValueChanges',
+	        value: function handleValueChanges(event) {
+	            var typedCharacters = event.target.value,
+	                options = typedCharacters.length < 2 ? [] : this.props.options.filter(function (p) {
+	                return ~(p.text || p).toLowerCase().indexOf(typedCharacters.toLowerCase());
+	            }).slice(0, this.props.max || 1000);
+
+	            this.setState({ options: options, highlight: -1, isactive: true, value: typedCharacters });
+	            this.notify();
+	        }
+	    }, {
+	        key: 'handleMetaKeys',
+	        value: function handleMetaKeys(event) {
+
+	            switch (event.keyCode || event.which) {
+	                // down
+	                case 40:
+	                    this.highlight(this.state.highlight + 1);
+	                    event.preventDefault();
+	                    break;
+
+	                //up
+	                case 38:
+	                    this.highlight(this.state.highlight - 1);
+	                    event.preventDefault();
+	                    break;
+
+	                //enter
+	                case 13:
+	                    {
+	                        var selected = this.refs['option-' + this.state.highlight];
+	                        this.select(selected && (selected.dataset.value || selected.textContent) || this.refs.input.value);
+	                        event.preventDefault();
+	                        break;
+	                    }
+
+	                case 27:
+	                    //escape
+	                    this.reset();
+	                    event.preventDefault();
+	                    break;
+	            }
+	        }
+	    }, {
+	        key: 'reset',
+	        value: function reset() {
+	            this.setState({ options: [], highlight: -1 });
+	        }
+	    }, {
+	        key: 'notify',
+	        value: function notify() {
+	            if (this.props.onSelect) {
+	                this.props.onSelect(this.refs.input.value);
+	            }
+	        }
+	    }, {
+	        key: 'select',
+	        value: function select(value) {
+	            this.refs.input.value = value;
+	            this.refs.input.focus();
+	            this.reset();
+	            this.notify();
+	        }
+	    }, {
+	        key: 'highlight',
+	        value: function highlight(n) {
+	            if (n >= 0 && n < this.state.options.length) {
+	                this.setState({ highlight: n });
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this,
+	                _classNames2;
+
+	            var options = this.state.options.map(function (o, i) {
+	                var _classNames;
+
+	                return _react2.default.createElement(
+	                    'div',
+	                    {
+	                        className: (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, _autoComplete2.default['option-item'], true), _defineProperty(_classNames, _autoComplete2.default['option-item--selected'], i === _this2.state.highlight), _classNames)),
+	                        'data-value': o.value || o,
+	                        key: i,
+	                        onClick: function onClick(e) {
+	                            return _this2.select(o.value || o);
+	                        },
+	                        onMouseOver: function onMouseOver() {
+	                            return _this2.setState({ highlight: i });
+	                        },
+	                        ref: 'option-' + i
+	                    },
+	                    (0, _strongify2.default)(o.text || o, _this2.state.value)
+	                );
+	            });
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: _autoComplete2.default['auto-complete'], onBlur: function onBlur() {
+	                        return _this2.setState({ isactive: false });
+	                    } },
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    this.props.label
+	                ),
+	                _react2.default.createElement('input', {
+	                    className: _autoComplete2.default.input,
+	                    placeholder: this.props.placeholder,
+	                    type: 'text',
+	                    ref: 'input',
+	                    onKeyDown: this.handleMetaKeys.bind(this)
+	                    // onChange={ throttle(this.handleValueChanges.bind(this)) }
+	                    , onChange: this.handleValueChanges.bind(this),
+	                    defaultValue: this.props.value
+	                }),
+	                _react2.default.createElement(
+	                    'div',
+	                    {
+	                        className: (0, _classnames2.default)((_classNames2 = {}, _defineProperty(_classNames2, _autoComplete2.default.options, true), _defineProperty(_classNames2, _autoComplete2.default['options--active'], this.state.isactive), _classNames2)) },
+	                    options
+	                )
+	            );
+	        }
+	    }]);
+
+	    return AutoComplete;
+	}(_react2.default.Component);
+
+	exports.default = AutoComplete;
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"auto-complete":"auto-complete__auto-complete___15LZD","input":"auto-complete__input___1QJ0K","options":"auto-complete__options___3fran","option-item":"auto-complete__option-item___3UbgG"};
+
+/***/ },
+/* 25 */,
+/* 26 */
+/***/ function(module, exports) {
+
+	module.exports = require("classnames");
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (full, part) {
+	    var pattern = new RegExp('(' + part + ')', 'ig'),
+	        parts = full.split(pattern);
+
+	    return parts.map(function (p, i) {
+	        return pattern.test(p) ? _react2.default.createElement(
+	            'strong',
+	            { key: i },
+	            part
+	        ) : p;
+	    });
+	};
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function uniqId() {
+	    return "dl-".concat(new Date().toISOString());
+	}
+
+	exports.default = function (_ref) {
+	    var _ref$options = _ref.options;
+	    var options = _ref$options === undefined ? [] : _ref$options;
+	    var _ref$className = _ref.className;
+	    var className = _ref$className === undefined ? "" : _ref$className;
+	    var _ref$label = _ref.label;
+	    var label = _ref$label === undefined ? "" : _ref$label;
+	    var _ref$value = _ref.value;
+	    var value = _ref$value === undefined ? "" : _ref$value;
+	    var _ref$placeholder = _ref.placeholder;
+	    var placeholder = _ref$placeholder === undefined ? "" : _ref$placeholder;
+	    var _ref$onChange = _ref.onChange;
+	    var onChange = _ref$onChange === undefined ? function () {} : _ref$onChange;
+
+
+	    var id = uniqId(),
+	        Options = options.map(function (o, i) {
+	        return _react2.default.createElement(
+	            "option",
+	            { key: i, value: o.value || o },
+	            o.text || o
+	        );
+	    });
+
+	    return _react2.default.createElement(
+	        "div",
+	        { className: className },
+	        _react2.default.createElement(
+	            "label",
+	            null,
+	            label
+	        ),
+	        _react2.default.createElement("input", {
+	            defaultValue: value,
+	            list: id,
+	            onChange: onChange,
+	            placeholder: placeholder,
+	            type: "text"
+	        }),
+	        _react2.default.createElement(
+	            "datalist",
+	            { id: id },
+	            Options
+	        )
+	    );
+	};
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _style = __webpack_require__(30);
+
+	var _style2 = _interopRequireDefault(_style);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (props) {
+
+	    var options = props.options.map(function (opt, i) {
+	        return _react2.default.createElement(
+	            'a',
+	            {
+	                key: i,
+	                className: _style2.default['option-item'],
+	                onClick: props.onSelect },
+	            opt
+	        );
+	    });
+
+	    return _react2.default.createElement(
+	        'div',
+	        { className: _style2.default['auto-complete'] },
+	        _react2.default.createElement(
+	            'label',
+	            null,
+	            props.label
+	        ),
+	        _react2.default.createElement('input', {
+	            type: 'text',
+	            placeholder: props.placeholder,
+	            onKeyDown: props.onInput,
+	            onChange: props.onChange,
+	            onFocus: props.onFocus,
+	            onBlur: props.onBlur,
+	            value: props.value
+	        }),
+	        _react2.default.createElement(
+	            'div',
+	            null,
+	            options
+	        )
+	    );
+	};
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"auto-complete":"style__auto-complete___1GZlf","input":"style__input___25RVD","options":"style__options___1O4TA","option-item":"style__option-item___2nSRv"};
+
+/***/ },
+/* 31 */,
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.selectPerson = exports.findPeople = exports.init = undefined;
+
+	var _people = __webpack_require__(33);
+
+	var init = exports.init = function init(people) {
+	  return { type: _people.INIT_PEOPLE, people: people };
+	};
+
+	var findPeople = exports.findPeople = function findPeople(q) {
+	  return { type: _people.FIND_PEOPLE, q: q };
+	};
+
+	var selectPerson = exports.selectPerson = function selectPerson(q) {
+	  return { type: _people.SELECT_PERSON, q: q };
+	};
+
+/***/ },
+/* 33 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = people;
+	var INIT_PEOPLE = exports.INIT_PEOPLE = Symbol('INIT_PEOPLE');
+	var FIND_PEOPLE = exports.FIND_PEOPLE = Symbol('FIND_PEOPLE');
+	var SELECT_PERSON = exports.SELECT_PERSON = Symbol('SELECT_PERSON');
+
+	function people() {
+	    var state = arguments.length <= 0 || arguments[0] === undefined ? { q: '', all: [], filtered: [] } : arguments[0];
+	    var action = arguments[1];
+
+	    switch (action.type) {
+	        case INIT_PEOPLE:
+	            return {
+	                q: '',
+	                all: action.people,
+	                filtered: []
+	            };
+
+	        case FIND_PEOPLE:
+	            return {
+	                all: [].concat(state.all),
+	                q: action.q,
+	                filtered: action.q.length > 1 ? state.all.filter(function (p) {
+	                    return ~p.toLowerCase().indexOf(action.q.toLowerCase());
+	                }) : []
+	            };
+
+	        case SELECT_PERSON:
+	            return {
+	                all: [].concat(state.all),
+	                q: action.q,
+	                filtered: []
+	            };
+
+	        default:
+	            return state;
+	    }
+	}
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _redux = __webpack_require__(35);
+
+	var _people = __webpack_require__(33);
+
+	var _people2 = _interopRequireDefault(_people);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var store = (0, _redux.combineReducers)({ people: _people2.default });
+
+	exports.default = (0, _redux.createStore)(store);
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	module.exports = require("redux");
+
+/***/ }
+/******/ ]);
