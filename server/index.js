@@ -7,10 +7,10 @@ import { minify } from 'html-minifier';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import routes from './routes';
 import {Provider} from 'react-redux';
-import store from './store.js';
 import Helmet from 'react-helmet';
+import routes from '../app/routes';
+import store from '../app/store.js';
 
 
 export const app = express();

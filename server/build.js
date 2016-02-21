@@ -79,19 +79,19 @@
 
 	var _reactRouter = __webpack_require__(8);
 
-	var _routes = __webpack_require__(9);
+	var _reactRedux = __webpack_require__(9);
+
+	var _reactHelmet = __webpack_require__(10);
+
+	var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+	var _routes = __webpack_require__(11);
 
 	var _routes2 = _interopRequireDefault(_routes);
-
-	var _reactRedux = __webpack_require__(11);
 
 	var _store = __webpack_require__(35);
 
 	var _store2 = _interopRequireDefault(_store);
-
-	var _reactHelmet = __webpack_require__(22);
-
-	var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -147,7 +147,7 @@
 	app.listen(PORT, function () {
 	    return console.log('Running on port ' + PORT);
 	}); // eslint-disable-line
-	/* WEBPACK VAR INJECTION */}.call(exports, ""))
+	/* WEBPACK VAR INJECTION */}.call(exports, "server"))
 
 /***/ },
 /* 1 */
@@ -199,6 +199,18 @@
 
 /***/ },
 /* 9 */
+/***/ function(module, exports) {
+
+	module.exports = require("react-redux");
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	module.exports = require("react-helmet");
+
+/***/ },
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -213,11 +225,11 @@
 
 	var _reactRouter = __webpack_require__(8);
 
-	var _App = __webpack_require__(10);
+	var _App = __webpack_require__(12);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Home = __webpack_require__(21);
+	var _Home = __webpack_require__(22);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
@@ -237,7 +249,7 @@
 	exports.default = routes;
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -250,17 +262,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(11);
+	var _reactRedux = __webpack_require__(9);
 
 	var _reactRouter = __webpack_require__(8);
 
-	var _SiteHeader = __webpack_require__(12);
+	var _SiteHeader = __webpack_require__(13);
 
 	var _SiteHeader2 = _interopRequireDefault(_SiteHeader);
 
-	__webpack_require__(17);
+	__webpack_require__(18);
 
-	var _style = __webpack_require__(19);
+	var _style = __webpack_require__(20);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -313,13 +325,7 @@
 	exports.default = (0, _reactRedux.connect)()(App);
 
 /***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	module.exports = require("react-redux");
-
-/***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -332,7 +338,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _style = __webpack_require__(13);
+	var _style = __webpack_require__(14);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -347,32 +353,32 @@
 	};
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"header":"style__header___2XLfO"};
+	module.exports = {"header":"header-1Ljex"};
 
 /***/ },
-/* 14 */,
 /* 15 */,
 /* 16 */,
-/* 17 */
+/* 17 */,
+/* 18 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 18 */,
-/* 19 */
+/* 19 */,
+/* 20 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"app":"style__app___1mKhk","wrapper":"style__wrapper___2UkQX","nav":"style__nav___332Qy","main":"style__main___3-8DB"};
+	module.exports = {"app":"app-2OjP9","wrapper":"wrapper-1ejJ0","nav":"nav-1nIIK","main":"main-3Gpz3"};
 
 /***/ },
-/* 20 */,
-/* 21 */
+/* 21 */,
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -385,9 +391,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(11);
+	var _reactRedux = __webpack_require__(9);
 
-	var _reactHelmet = __webpack_require__(22);
+	var _reactHelmet = __webpack_require__(10);
 
 	var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
@@ -412,12 +418,6 @@
 	exports.default = (0, _reactRedux.connect)()(Home);
 
 /***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	module.exports = require("react-helmet");
-
-/***/ },
 /* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -431,7 +431,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(11);
+	var _reactRedux = __webpack_require__(9);
 
 	var _AutoComplete = __webpack_require__(24);
 
@@ -447,7 +447,7 @@
 
 	var _people = __webpack_require__(33);
 
-	var _reactHelmet = __webpack_require__(22);
+	var _reactHelmet = __webpack_require__(10);
 
 	var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
@@ -687,7 +687,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"auto-complete":"auto-complete__auto-complete___15LZD","input":"auto-complete__input___1QJ0K","options":"auto-complete__options___3fran","option-item":"auto-complete__option-item___3UbgG"};
+	module.exports = {"auto-complete":"auto-complete-3_QtF","input":"input-ulkM5","options":"options-1V9wN","option-item":"option-item-347Q3"};
 
 /***/ },
 /* 26 */,
@@ -855,7 +855,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"auto-complete":"style__auto-complete___1GZlf","input":"style__input___25RVD","options":"style__options___1O4TA","option-item":"style__option-item___2nSRv"};
+	module.exports = {"auto-complete":"auto-complete-2ao1r","input":"input-3cvaX","options":"options-3Y2CC","option-item":"option-item-_e2zC"};
 
 /***/ },
 /* 32 */,

@@ -5,10 +5,11 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default {
 
-    entry: path.resolve(__dirname, 'server.js'),
+    entry: path.resolve('server/index.js'),
 
     output: {
-        filename: 'server.bundle.js'
+        filename: 'build.js',
+        path: path.join(__dirname, 'server')
     },
 
     target: 'node',
@@ -30,7 +31,7 @@ export default {
     },
 
     plugins: [
-        new ExtractTextPlugin(path.join(__dirname, "public", "style2.css"))
+        new ExtractTextPlugin(path.join("public","style2.css"))
     ],
 
     module: {
@@ -39,7 +40,7 @@ export default {
                 test: /\.s?css$/,
                 loader: ExtractTextPlugin.extract(
                     "style-loader",
-                    "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader",
+                    "css-loader?modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]!postcss-loader",
                     "sass-loader"
                 )
             },

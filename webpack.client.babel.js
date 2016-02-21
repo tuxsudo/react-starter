@@ -5,9 +5,9 @@ import precss from 'precss';
 import webpack from 'webpack';
 
 export default {
-    entry: "./app.js",
+    entry: "./client/index.js",
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'server', 'public'),
         filename: "bundle.js"
     },
     module: {
@@ -72,7 +72,7 @@ export default {
     ],
 
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
+        contentBase: path.join(__dirname, 'server', 'public'),
         historyApiFallback: true,
         hot: false,
         inline: true,

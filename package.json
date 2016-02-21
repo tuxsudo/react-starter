@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.client.babel.js --progress --colors",
-    "start": "npm run build && node server.bundle.js",
+    "start": "npm run build && node server/build.js",
     "build:client": "webpack --quiet --config webpack.client.babel.js",
     "build:server": "webpack --quiet --config webpack.server.babel.js",
     "build": "npm run build:client && npm run build:server"
