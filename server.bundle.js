@@ -51,6 +51,8 @@
 	});
 	exports.app = undefined;
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _express = __webpack_require__(1);
 
 	var _express2 = _interopRequireDefault(_express);
@@ -83,9 +85,13 @@
 
 	var _reactRedux = __webpack_require__(11);
 
-	var _store = __webpack_require__(34);
+	var _store = __webpack_require__(35);
 
 	var _store2 = _interopRequireDefault(_store);
+
+	var _reactHelmet = __webpack_require__(22);
+
+	var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -105,21 +111,31 @@
 	        } else if (redirect) {
 	            res.redirect(redirect.pathname + redirect.search);
 	        } else if (props) {
-
-	            var html = (0, _server.renderToString)(_react2.default.createElement(
+	            var content = (0, _server.renderToString)(_react2.default.createElement(
 	                _reactRedux.Provider,
 	                { store: _store2.default },
 	                _react2.default.createElement(_reactRouter.RouterContext, props)
 	            ));
-	            res.send(buildPage(html));
+	            res.send(buildPage(_extends({}, _reactHelmet2.default.rewind(), { content: content })));
 	        } else {
 	            res.status(404).send('Not Found');
 	        }
 	    });
 	});
 
-	function buildPage(innerHTML) {
-	    return (0, _htmlMinifier.minify)(template.replace('<!--REACTAPP-->', innerHTML), {
+	function buildPage() {
+	    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	    var _ref$content = _ref.content;
+	    var content = _ref$content === undefined ? "" : _ref$content;
+	    var _ref$title = _ref.title;
+	    var title = _ref$title === undefined ? "" : _ref$title;
+	    var _ref$meta = _ref.meta;
+	    var meta = _ref$meta === undefined ? "" : _ref$meta;
+	    var _ref$links = _ref.links;
+	    var links = _ref$links === undefined ? "" : _ref$links;
+
+	    return (0, _htmlMinifier.minify)(template.replace('<!--STUB_TITLE-->', title).replace('<!--STUB_META-->', meta).replace('<!--STUB_LINKS-->', links).replace('<!--STUB_APP-->', content), {
 	        collapseWhitespace: true,
 	        removeComments: true,
 	        removeAttributeQuotes: true
@@ -205,7 +221,7 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _AutoCompletes = __webpack_require__(22);
+	var _AutoCompletes = __webpack_require__(23);
 
 	var _AutoCompletes2 = _interopRequireDefault(_AutoCompletes);
 
@@ -369,14 +385,22 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	var _reactRedux = __webpack_require__(11);
+
+	var _reactHelmet = __webpack_require__(22);
+
+	var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Home = function Home() {
 	    return _react2.default.createElement(
 	        'div',
 	        null,
+	        _react2.default.createElement(_reactHelmet2.default, {
+	            title: 'React Starter Home',
+	            meta: [{ "name": "description", "content": "A React Starter" }, { "property": "og:type", "content": "article" }]
+	        }),
 	        _react2.default.createElement(
 	            'h1',
 	            null,
@@ -389,6 +413,12 @@
 
 /***/ },
 /* 22 */
+/***/ function(module, exports) {
+
+	module.exports = require("react-helmet");
+
+/***/ },
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -403,19 +433,23 @@
 
 	var _reactRedux = __webpack_require__(11);
 
-	var _AutoComplete = __webpack_require__(23);
+	var _AutoComplete = __webpack_require__(24);
 
 	var _AutoComplete2 = _interopRequireDefault(_AutoComplete);
 
-	var _DataList = __webpack_require__(28);
+	var _DataList = __webpack_require__(29);
 
 	var _DataList2 = _interopRequireDefault(_DataList);
 
-	var _DumbComplete = __webpack_require__(29);
+	var _DumbComplete = __webpack_require__(30);
 
 	var _DumbComplete2 = _interopRequireDefault(_DumbComplete);
 
-	var _people = __webpack_require__(32);
+	var _people = __webpack_require__(33);
+
+	var _reactHelmet = __webpack_require__(22);
+
+	var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -430,6 +464,7 @@
 	    return _react2.default.createElement(
 	        'div',
 	        null,
+	        _react2.default.createElement(_reactHelmet2.default, { title: '3 different AutoCompletes' }),
 	        _react2.default.createElement(_AutoComplete2.default, {
 	            onSelect: console.log.bind(console) // eslint-disable-line
 	            , options: people,
@@ -463,7 +498,7 @@
 	})(App);
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -478,15 +513,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _autoComplete = __webpack_require__(24);
+	var _autoComplete = __webpack_require__(25);
 
 	var _autoComplete2 = _interopRequireDefault(_autoComplete);
 
-	var _classnames = __webpack_require__(26);
+	var _classnames = __webpack_require__(27);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _strongify = __webpack_require__(27);
+	var _strongify = __webpack_require__(28);
 
 	var _strongify2 = _interopRequireDefault(_strongify);
 
@@ -648,21 +683,21 @@
 	exports.default = AutoComplete;
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"auto-complete":"auto-complete__auto-complete___15LZD","input":"auto-complete__input___1QJ0K","options":"auto-complete__options___3fran","option-item":"auto-complete__option-item___3UbgG"};
 
 /***/ },
-/* 25 */,
-/* 26 */
+/* 26 */,
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports = require("classnames");
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -691,7 +726,7 @@
 	};
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -758,7 +793,7 @@
 	};
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -771,7 +806,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _style = __webpack_require__(30);
+	var _style = __webpack_require__(31);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -816,15 +851,15 @@
 	};
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"auto-complete":"style__auto-complete___1GZlf","input":"style__input___25RVD","options":"style__options___1O4TA","option-item":"style__option-item___2nSRv"};
 
 /***/ },
-/* 31 */,
-/* 32 */
+/* 32 */,
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -834,7 +869,7 @@
 	});
 	exports.selectPerson = exports.findPeople = exports.init = undefined;
 
-	var _people = __webpack_require__(33);
+	var _people = __webpack_require__(34);
 
 	var init = exports.init = function init(people) {
 	  return { type: _people.INIT_PEOPLE, people: people };
@@ -849,7 +884,7 @@
 	};
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -896,7 +931,7 @@
 	}
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -905,9 +940,9 @@
 	  value: true
 	});
 
-	var _redux = __webpack_require__(35);
+	var _redux = __webpack_require__(36);
 
-	var _people = __webpack_require__(33);
+	var _people = __webpack_require__(34);
 
 	var _people2 = _interopRequireDefault(_people);
 
@@ -918,7 +953,7 @@
 	exports.default = (0, _redux.createStore)(store);
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	module.exports = require("redux");
