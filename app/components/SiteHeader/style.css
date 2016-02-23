@@ -1,5 +1,8 @@
 .header {
     background: #bada55;
     color: #133;
-    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em;
+    padding-top: 1em;
 }

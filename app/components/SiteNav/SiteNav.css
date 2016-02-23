@@ -1,0 +1,13 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.link {
+    display: block;
+    text-decoration: none;
+
+    &:not(:last-child) {
+        margin-right: 1em;
+    }
+}

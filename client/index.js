@@ -5,9 +5,10 @@ import {Provider} from 'react-redux';
 
 import routes from '../app/routes.js';
 import store from '../app/store.js';
-import { bootstrap } from '../app/actions/bootstrap.js';
 
-store.dispatch(bootstrap());
+// import { bootstrap } from '../app/actions/bootstrap.js';
+
+// store.dispatch(bootstrap());
 
 render(
     <Provider store={store}>

@@ -28,7 +28,7 @@ export default props => {
                 value={ props.value }
                 />
 
-            <div>{options}</div>
+            <div className={style.options}>{options}</div>
 
         </div>
 

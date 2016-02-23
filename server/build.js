@@ -67,7 +67,7 @@
 
 	var _reactHandler2 = _interopRequireDefault(_reactHandler);
 
-	var _helmet = __webpack_require__(39);
+	var _helmet = __webpack_require__(45);
 
 	var _helmet2 = _interopRequireDefault(_helmet);
 
@@ -149,7 +149,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _store = __webpack_require__(37);
+	var _store = __webpack_require__(43);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -281,11 +281,11 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Home = __webpack_require__(24);
+	var _Home = __webpack_require__(33);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _AutoCompletes = __webpack_require__(25);
+	var _AutoCompletes = __webpack_require__(34);
 
 	var _AutoCompletes2 = _interopRequireDefault(_AutoCompletes);
 
@@ -310,71 +310,83 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react2 = __webpack_require__(5);
+
+	var _react3 = _interopRequireDefault(_react2);
+
 	var _react = __webpack_require__(5);
 
-	var _react2 = _interopRequireDefault(_react);
-
 	var _reactRedux = __webpack_require__(8);
-
-	var _reactRouter = __webpack_require__(7);
 
 	var _SiteHeader = __webpack_require__(15);
 
 	var _SiteHeader2 = _interopRequireDefault(_SiteHeader);
 
-	__webpack_require__(20);
+	__webpack_require__(24);
 
-	var _style = __webpack_require__(22);
+	var _style = __webpack_require__(26);
 
 	var _style2 = _interopRequireDefault(_style);
 
+	var _bootstrap = __webpack_require__(28);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var App = function App(_ref) {
-	    var children = _ref.children;
-	    return _react2.default.createElement(
-	        'div',
-	        { className: _style2.default.app },
-	        _react2.default.createElement(_SiteHeader2.default, null),
-	        _react2.default.createElement(
-	            'div',
-	            { className: _style2.default.wrapper },
-	            _react2.default.createElement(
-	                'nav',
-	                { className: _style2.default.nav },
-	                _react2.default.createElement(
-	                    'ul',
-	                    null,
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/' },
-	                            'Home'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/auto-completes' },
-	                            'Auto Complete Demo'
-	                        )
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // import 'babel-polyfill';
+
+
+	var App = function (_Component) {
+	    _inherits(App, _Component);
+
+	    function App() {
+	        _classCallCheck(this, App);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+	    }
+
+	    _createClass(App, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            var _this2 = this;
+
+	            (0, _bootstrap.bootstrap)().then(function (data) {
+	                return data.forEach(function (action) {
+	                    return _this2.props.dispatch(action);
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react3.default.createElement(
+	                'div',
+	                { className: _style2.default.app },
+	                _react3.default.createElement(_SiteHeader2.default, { className: _style2.default.header, links: this.props.nav }),
+	                _react3.default.createElement(
+	                    'div',
+	                    { className: _style2.default.wrapper },
+	                    _react3.default.createElement(
+	                        'main',
+	                        { className: _style2.default.main },
+	                        this.props.children
 	                    )
 	                )
-	            ),
-	            _react2.default.createElement(
-	                'main',
-	                { className: _style2.default.main },
-	                children
-	            )
-	        )
-	    );
-	};
+	            );
+	        }
+	    }]);
 
-	exports.default = (0, _reactRedux.connect)()(App);
+	    return App;
+	}(_react.Component);
+
+	exports.default = (0, _reactRedux.connect)(function (store) {
+	    return { nav: store.nav };
+	})(App);
 
 /***/ },
 /* 15 */
@@ -394,13 +406,30 @@
 
 	var _style2 = _interopRequireDefault(_style);
 
+	var _SiteNav = __webpack_require__(20);
+
+	var _SiteNav2 = _interopRequireDefault(_SiteNav);
+
+	var _classnames = __webpack_require__(23);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = function () {
+	exports.default = function (_ref) {
+	    var _ref$links = _ref.links;
+	    var links = _ref$links === undefined ? [] : _ref$links;
+	    var _ref$className = _ref.className;
+	    var className = _ref$className === undefined ? "" : _ref$className;
 	    return _react2.default.createElement(
 	        'header',
-	        { className: _style2.default.header },
-	        'Welcome to my Website'
+	        { className: (0, _classnames2.default)(_style2.default.header, className) },
+	        _react2.default.createElement(
+	            'span',
+	            { className: _style2.default.brand },
+	            'Welcome to my Website'
+	        ),
+	        _react2.default.createElement(_SiteNav2.default, { className: _style2.default.nav, links: links })
 	    );
 	};
 
@@ -416,21 +445,239 @@
 /* 18 */,
 /* 19 */,
 /* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _SiteNav = __webpack_require__(21);
+
+	var _SiteNav2 = _interopRequireDefault(_SiteNav);
+
+	var _reactRouter = __webpack_require__(7);
+
+	var _classnames = __webpack_require__(23);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (_ref) {
+	    var _ref$links = _ref.links;
+	    var links = _ref$links === undefined ? [] : _ref$links;
+	    var _ref$className = _ref.className;
+	    var className = _ref$className === undefined ? "" : _ref$className;
+	    return _react2.default.createElement(
+	        'nav',
+	        { className: (0, _classnames2.default)(_SiteNav2.default.nav, className) },
+	        links.map(function (l, i) {
+	            return _react2.default.createElement(
+	                _reactRouter.Link,
+	                { className: _SiteNav2.default.link, key: 'navlink' + i, to: l.href },
+	                l.text
+	            );
+	        })
+	    );
+	};
+
+/***/ },
+/* 21 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+	module.exports = {"nav":"nav-2n3WB","link":"link-_tA9q"};
 
 /***/ },
-/* 21 */,
-/* 22 */
+/* 22 */,
+/* 23 */
 /***/ function(module, exports) {
 
-	// removed by extract-text-webpack-plugin
-	module.exports = {"app":"app-2OjP9","wrapper":"wrapper-1ejJ0","nav":"nav-1nIIK","main":"main-3Gpz3"};
+	module.exports = require("classnames");
 
 /***/ },
-/* 23 */,
 /* 24 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 25 */,
+/* 26 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+	module.exports = {"app":"app-2OjP9","header":"header-1apcV","wrapper":"wrapper-1ejJ0"};
+
+/***/ },
+/* 27 */,
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.bootstrap = undefined;
+
+	var _people = __webpack_require__(29);
+
+	var _siteNav = __webpack_require__(31);
+
+	var bootstrap = exports.bootstrap = function bootstrap() {
+	    return Promise.all([(0, _siteNav.init)(), (0, _people.init)()]);
+	};
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.selectPerson = exports.findPeople = exports.init = undefined;
+
+	var _people = __webpack_require__(30);
+
+	function getPeople() {
+	    // fake async action...
+	    return Promise.resolve(['Jared Anderson', 'Sara Anderson', 'Elijah Anderson', 'Xander Anderson', 'Maxwell Anderson', 'Amelia Anderson', 'Ivy Anderson', 'Grandpa Anderson', 'Grandma Anderson', 'Grandpa Jensen', 'Grandma Jensen', 'Grandpa Ross']);
+	}
+
+	var init = exports.init = function init() {
+	    return getPeople().then(function (people) {
+	        return { type: _people.INIT_PEOPLE, people: people };
+	    });
+	};
+
+	var findPeople = exports.findPeople = function findPeople(q) {
+	    return { type: _people.FIND_PEOPLE, q: q };
+	};
+
+	var selectPerson = exports.selectPerson = function selectPerson(q) {
+	    return { type: _people.SELECT_PERSON, q: q };
+	};
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = people;
+	var INIT_PEOPLE = exports.INIT_PEOPLE = Symbol('INIT_PEOPLE');
+	var FIND_PEOPLE = exports.FIND_PEOPLE = Symbol('FIND_PEOPLE');
+	var SELECT_PERSON = exports.SELECT_PERSON = Symbol('SELECT_PERSON');
+
+	function people() {
+	    var state = arguments.length <= 0 || arguments[0] === undefined ? { q: '', all: [], filtered: [] } : arguments[0];
+	    var action = arguments[1];
+
+	    switch (action.type) {
+	        case INIT_PEOPLE:
+	            return {
+	                q: '',
+	                all: action.people,
+	                filtered: []
+	            };
+
+	        case FIND_PEOPLE:
+	            return {
+	                all: [].concat(state.all),
+	                q: action.q,
+	                filtered: action.q.length > 1 ? state.all.filter(function (p) {
+	                    return ~p.toLowerCase().indexOf(action.q.toLowerCase());
+	                }) : []
+	            };
+
+	        case SELECT_PERSON:
+	            return {
+	                all: [].concat(state.all),
+	                q: action.q,
+	                filtered: []
+	            };
+
+	        default:
+	            return state;
+	    }
+	}
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.init = init;
+
+	var _siteNav = __webpack_require__(32);
+
+	function getNav() {
+	    // pretend this is grabbed async
+	    return Promise.resolve([{
+	        href: '/',
+	        text: 'Home'
+	    }, {
+	        href: '/auto-completes',
+	        text: 'Demo'
+	    }]);
+	}
+
+	function init() {
+	    return getNav().then(setNav);
+	}
+
+	function setNav() {
+	    var nav = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+
+	    return { type: _siteNav.SET, nav: nav };
+	}
+
+/***/ },
+/* 32 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function () {
+	    var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+	    var _ref = arguments[1];
+	    var type = _ref.type;
+	    var _ref$nav = _ref.nav;
+	    var nav = _ref$nav === undefined ? [] : _ref$nav;
+
+	    switch (type) {
+	        case SET:
+	            return nav;
+
+	        default:
+	            return state;
+	    }
+	};
+
+	var SET = exports.SET = Symbol('SET');
+
+/***/ },
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -470,7 +717,7 @@
 	exports.default = (0, _reactRedux.connect)()(Home);
 
 /***/ },
-/* 25 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -485,19 +732,19 @@
 
 	var _reactRedux = __webpack_require__(8);
 
-	var _AutoComplete = __webpack_require__(26);
+	var _AutoComplete = __webpack_require__(35);
 
 	var _AutoComplete2 = _interopRequireDefault(_AutoComplete);
 
-	var _DataList = __webpack_require__(31);
+	var _DataList = __webpack_require__(39);
 
 	var _DataList2 = _interopRequireDefault(_DataList);
 
-	var _DumbComplete = __webpack_require__(32);
+	var _DumbComplete = __webpack_require__(40);
 
 	var _DumbComplete2 = _interopRequireDefault(_DumbComplete);
 
-	var _people = __webpack_require__(35);
+	var _people = __webpack_require__(29);
 
 	var _reactHelmet = __webpack_require__(9);
 
@@ -505,7 +752,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var App = function App(_ref) {
+	var AutoCompleteContainer = function AutoCompleteContainer(_ref) {
 	    var _ref$people = _ref.people;
 	    var people = _ref$people === undefined ? [] : _ref$people;
 	    var _ref$filtered = _ref.filtered;
@@ -547,10 +794,10 @@
 	exports.default = (0, _reactRedux.connect)(function (_ref2) {
 	    var people = _ref2.people;
 	    return { people: people.all, filtered: people.filtered, q: people.q };
-	})(App);
+	})(AutoCompleteContainer);
 
 /***/ },
-/* 26 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -565,15 +812,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _autoComplete = __webpack_require__(27);
+	var _autoComplete = __webpack_require__(36);
 
 	var _autoComplete2 = _interopRequireDefault(_autoComplete);
 
-	var _classnames = __webpack_require__(29);
+	var _classnames = __webpack_require__(23);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _strongify = __webpack_require__(30);
+	var _strongify = __webpack_require__(38);
 
 	var _strongify2 = _interopRequireDefault(_strongify);
 
@@ -735,21 +982,15 @@
 	exports.default = AutoComplete;
 
 /***/ },
-/* 27 */
+/* 36 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"auto-complete":"auto-complete-3_QtF","input":"input-ulkM5","options":"options-1V9wN","option-item":"option-item-347Q3"};
 
 /***/ },
-/* 28 */,
-/* 29 */
-/***/ function(module, exports) {
-
-	module.exports = require("classnames");
-
-/***/ },
-/* 30 */
+/* 37 */,
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -778,7 +1019,7 @@
 	};
 
 /***/ },
-/* 31 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -845,7 +1086,7 @@
 	};
 
 /***/ },
-/* 32 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -858,7 +1099,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _style = __webpack_require__(33);
+	var _style = __webpack_require__(41);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -896,94 +1137,22 @@
 	        }),
 	        _react2.default.createElement(
 	            'div',
-	            null,
+	            { className: _style2.default.options },
 	            options
 	        )
 	    );
 	};
 
 /***/ },
-/* 33 */
+/* 41 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"auto-complete":"auto-complete-2ao1r","input":"input-3cvaX","options":"options-3Y2CC","option-item":"option-item-_e2zC"};
 
 /***/ },
-/* 34 */,
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.selectPerson = exports.findPeople = exports.init = undefined;
-
-	var _people = __webpack_require__(36);
-
-	var init = exports.init = function init(people) {
-	  return { type: _people.INIT_PEOPLE, people: people };
-	};
-
-	var findPeople = exports.findPeople = function findPeople(q) {
-	  return { type: _people.FIND_PEOPLE, q: q };
-	};
-
-	var selectPerson = exports.selectPerson = function selectPerson(q) {
-	  return { type: _people.SELECT_PERSON, q: q };
-	};
-
-/***/ },
-/* 36 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = people;
-	var INIT_PEOPLE = exports.INIT_PEOPLE = Symbol('INIT_PEOPLE');
-	var FIND_PEOPLE = exports.FIND_PEOPLE = Symbol('FIND_PEOPLE');
-	var SELECT_PERSON = exports.SELECT_PERSON = Symbol('SELECT_PERSON');
-
-	function people() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? { q: '', all: [], filtered: [] } : arguments[0];
-	    var action = arguments[1];
-
-	    switch (action.type) {
-	        case INIT_PEOPLE:
-	            return {
-	                q: '',
-	                all: action.people,
-	                filtered: []
-	            };
-
-	        case FIND_PEOPLE:
-	            return {
-	                all: [].concat(state.all),
-	                q: action.q,
-	                filtered: action.q.length > 1 ? state.all.filter(function (p) {
-	                    return ~p.toLowerCase().indexOf(action.q.toLowerCase());
-	                }) : []
-	            };
-
-	        case SELECT_PERSON:
-	            return {
-	                all: [].concat(state.all),
-	                q: action.q,
-	                filtered: []
-	            };
-
-	        default:
-	            return state;
-	    }
-	}
-
-/***/ },
-/* 37 */
+/* 42 */,
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -992,26 +1161,30 @@
 	  value: true
 	});
 
-	var _redux = __webpack_require__(38);
+	var _redux = __webpack_require__(44);
 
-	var _people = __webpack_require__(36);
+	var _people = __webpack_require__(30);
 
 	var _people2 = _interopRequireDefault(_people);
 
+	var _siteNav = __webpack_require__(32);
+
+	var _siteNav2 = _interopRequireDefault(_siteNav);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var store = (0, _redux.combineReducers)({ people: _people2.default });
+	var store = (0, _redux.combineReducers)({ people: _people2.default, nav: _siteNav2.default });
 
 	exports.default = (0, _redux.createStore)(store);
 
 /***/ },
-/* 38 */
+/* 44 */
 /***/ function(module, exports) {
 
 	module.exports = require("redux");
 
 /***/ },
-/* 39 */
+/* 45 */
 /***/ function(module, exports) {
 
 	module.exports = require("helmet");

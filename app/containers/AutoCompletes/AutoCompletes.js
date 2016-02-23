@@ -6,7 +6,7 @@ import DumbComplete from '../../components/DumbComplete/DumbComplete.js';
 import { findPeople, selectPerson } from '../../actions/people.js';
 import Helmet from 'react-helmet';
 
-const App = ({ people = [], filtered = [], q="", dispatch }) => (
+const AutoCompleteContainer = ({ people = [], filtered = [], q="", dispatch }) => (
     <div>
         <Helmet title="3 different AutoCompletes" />
         <AutoComplete
@@ -37,4 +37,4 @@ const App = ({ people = [], filtered = [], q="", dispatch }) => (
 
 
 
-export default connect( ({ people }) => ({ people: people.all, filtered: people.filtered, q: people.q }) )(App);
+export default connect( ({ people }) => ({ people: people.all, filtered: people.filtered, q: people.q }) )(AutoCompleteContainer);

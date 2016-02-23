@@ -1,18 +1,7 @@
-import { INIT_PEOPLE } from '../reducers/people.js';
+import { init as initPeople } from './people.js';
+import { init as initNav } from './site-nav.js';
 
-const people = [
-    'Jared Anderson',
-    'Sara Anderson',
-    'Elijah Anderson',
-    'Xander Anderson',
-    'Maxwell Anderson',
-    'Amelia Anderson',
-    'Ivy Anderson',
-    'Grandpa Anderson',
-    'Grandma Anderson',
-    'Grandpa Jensen',
-    'Grandma Jensen',
-    'Grandpa Ross'
-];
-
-export const bootstrap = () => ({ type: INIT_PEOPLE, people });
+export const bootstrap = () => Promise.all([
+    initNav(),
+    initPeople()
+]);
