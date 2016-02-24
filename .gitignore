@@ -1,1 +1,8 @@
 node_modules
+npm-debug.log
+.DS_Store
+
+# built files
+server/public/bundle.js
+server/public/style.css
+server/public/style2.css
