@@ -34,6 +34,7 @@
     "cssnano": "^3.3.2",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.8.5",
     "helmet": "^1.1.0",
     "html-minifier": "^1.2.0",
     "normalize.css": "^3.0.3",

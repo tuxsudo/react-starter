@@ -1,0 +1,21 @@
+.header {
+    align-items: center;
+    background: #bada55;
+    color: #133;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
+.brand {
+    color: #0a0a0a;
+    text-decoration: none;
+}
+
+.logo {
+    height: 2em;
+    margin-right: .5em;
+    vertical-align: middle;
+    width: 2em;
+}
