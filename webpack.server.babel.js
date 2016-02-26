@@ -1,15 +1,19 @@
+import base from './webpack.base.babel.js';
 import fs from 'fs';
 import path from 'path';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 
 export default {
 
-    entry: path.resolve('server/index.js'),
+    ...base,
+
+    entry: path.resolve('./app/_server.js'),
 
     output: {
-        filename: 'build.js',
-        path: path.join(__dirname, 'server')
+        filename: 'index.js',
+        library: 'index.js',
+        libraryTarget: 'commonjs2',
+        path: path.join(__dirname, 'server', 'modules', 'react-server-app')
     },
 
     target: 'node',
@@ -28,36 +32,5 @@ export default {
     node: {
         __filename: true,
         __dirname: true
-    },
-
-    plugins: [
-        new ExtractTextPlugin(path.join("public","style2.css"))
-    ],
-
-    module: {
-        loaders: [
-            {
-                test: /\.s?css$/,
-                loader: ExtractTextPlugin.extract(
-                    "style-loader",
-                    "css-loader?modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]!postcss-loader",
-                    "sass-loader"
-                )
-            },
-
-            {
-                test : /\.jsx?$/,
-                exclude : /(node_modules|bower_components)/,
-                loader  : 'babel'
-            },
-
-            {
-                test: /\.(png|jpe?g|gif|svg|mp3|mpe?g)$/,
-                loader: "file-loader"
-            }
-
-        ]
-
     }
-
 }

@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import compression from 'compression';
-import reactHandler from './react-handler';
+import reactHandler from './modules/react-server-app';
 import helmet from 'helmet';
 
 // create express app...
@@ -10,7 +10,7 @@ export const app = express();
 // middleware
 app.use(compression());
 app.use(helmet());
-app.use(express.static(path.join(__dirname, 'public'), {index: false}));
+app.use(express.static(path.join(__dirname, '..', 'static'), {index: false}));
 
 // handle routes via react...
 app.get('*', reactHandler);

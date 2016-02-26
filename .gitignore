@@ -3,5 +3,7 @@ npm-debug.log
 .DS_Store
 
 # built files
+/dist
 static/assets
 static/app.*
+server/modules/react-server-app

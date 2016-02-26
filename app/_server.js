@@ -1,18 +1,18 @@
 import React from 'react';
+import docTemplate from './HTML.js';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import Helmet from 'react-helmet';
-import documentBuilder from './document-builder.js';
-import routes from '../../app/routes';
-import store from '../../app/store.js';
+import routes from './routes.js';
+import store from './store.js';
+import { minify } from 'html-minifier';
 
-
-export default (req, res) => {
+export default (req, res, next) => {
     match({ routes, location: req.url }, (err, redirect, props) => {
 
         if (err) {
-            res.status(500).send(err.message)
+            return next(err);
 
         } else if (redirect) {
             res.redirect(redirect.pathname + redirect.search)
@@ -23,7 +23,12 @@ export default (req, res) => {
                     <RouterContext {...props} />
                 </Provider>
             );
-            res.send(documentBuilder({ ...(Helmet.rewind()), content }))
+            res.send(
+                minify(
+                    docTemplate({ ...(Helmet.rewind()), content }),
+                    { collapseWhitespace: true, removeComments: true, removeAttributeQuotes: true }
+                )
+            );
         } else {
             res.status(404).send('Not Found')
         }
