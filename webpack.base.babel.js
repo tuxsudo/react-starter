@@ -1,6 +1,7 @@
 import cssnano from 'cssnano';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import precss from 'precss';
+import webpack from 'webpack'
 
 export default {
 
@@ -30,7 +31,12 @@ export default {
 
     },
 
-    plugins: [ new ExtractTextPlugin("app.css") ],
+    plugins: [
+        new ExtractTextPlugin("app.css"),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': `"${process.env.NODE_ENV||"production"}"`
+        })
+    ],
 
 
     cssLoader: {
