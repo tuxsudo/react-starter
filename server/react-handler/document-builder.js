@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 const template = fs.readFileSync(
-    path.join(__dirname, '..', 'public', 'index.html')
+    path.join(__dirname, '..', '..', 'static', 'index.html')
 ).toString();
 
 export default function ({content="", title="", meta="", links=""}={}) {

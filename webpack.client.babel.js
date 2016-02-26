@@ -5,10 +5,10 @@ import precss from 'precss';
 import webpack from 'webpack';
 
 export default {
-    entry: "./client/index.js",
+    entry: "./app/_client.js",
     output: {
-        path: path.join(__dirname, 'server', 'public'),
-        filename: "bundle.js"
+        path: path.join(__dirname, 'static'),
+        filename: "app.js"
     },
     module: {
         loaders: [
@@ -29,7 +29,7 @@ export default {
 
             {
                 test: /\.(png|jpe?g|gif|svg|mp3|mpe?g)$/,
-                loader: "file-loader"
+                loader: "file-loader?name=assets/[name]-[hash:2].[ext]"
             }
 
         ]
@@ -37,7 +37,7 @@ export default {
     },
 
     plugins: [
-        new ExtractTextPlugin("style.css")
+        new ExtractTextPlugin("app.css")
     ].concat(process.env.NODE_ENV==="production"
         ? [
             new webpack.optimize.OccurenceOrderPlugin(),
@@ -78,7 +78,7 @@ export default {
     ],
 
     devServer: {
-        contentBase: path.join(__dirname, 'server', 'public'),
+        contentBase: path.join(__dirname, 'static'),
         historyApiFallback: true,
         hot: false,
         inline: true,
