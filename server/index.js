@@ -1,8 +1,10 @@
 import express from 'express';
 import path from 'path';
 import compression from 'compression';
-import reactHandler from './modules/react-server-app';
 import helmet from 'helmet';
+
+// this module is built by npm script...
+import reactHandler from './modules/react-server-app';
 
 // create express app...
 export const app = express();
