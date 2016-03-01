@@ -1,90 +1,88 @@
 {
-    "name": "react-starter",
-    "version": "1.0.0",
-    "description": "An Isomorphic React Starter",
-    "main": "index.js",
-    "scripts": {
-        "dev": "better-npm-run dev",
-        "prestart": "npm-run-all -p build:react:* && npm run build:express",
-        "start": "better-npm-run start",
-        "build:express": "better-npm-run build:express",
-        "build:react:client": "better-npm-run build:react:client",
-        "build:react:server": "better-npm-run build:react:server"
+  "name": "react-starter",
+  "version": "1.0.0",
+  "description": "An Isomorphic React Starter",
+  "main": "index.js",
+  "scripts": {
+    "dev": "better-npm-run dev",
+    "prestart": "npm-run-all -p build:react:* && npm run build:express",
+    "start": "better-npm-run start",
+    "build:express": "better-npm-run build:express",
+    "build:react:client": "better-npm-run build:react:client",
+    "build:react:server": "better-npm-run build:react:server"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "node dist/index.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
     },
-    "betterScripts": {
-        "start": {
-            "command": "node dist/index.js",
-            "env": {
-                "NODE_ENV": "production"
-            }
-        },
-        "dev": {
-            "command": "webpack-dev-server --config webpack.client.babel.js --progress --colors",
-            "env": {
-                "NODE_ENV": "development"
-            }
-        },
-        "build:react:client": {
-            "command": "webpack --quiet --config webpack.client.babel.js",
-            "env": {
-                "NODE_ENV": "production"
-            }
-        },
-        "build:react:server": {
-            "command": "webpack --quiet --config webpack.server.babel.js",
-            "env": {
-                "NODE_ENV": "production"
-            }
-        },
-        "build:express": {
-            "command": "babel server -d dist",
-            "env": {
-                "NODE_ENV": "production"
-            }
-        }
+    "dev": {
+      "command": "webpack-dev-server --config webpack.client.babel.js --progress --colors",
+      "env": {
+        "NODE_ENV": "development"
+      }
     },
-    "author": "Jared Anderson",
-    "license": "MIT",
-    "devDependencies": {
-        "babel-cli": "^6.5.1",
-        "enzyme": "^2.0.0",
-        "eslint": "^2.1.0",
-        "eslint-plugin-react": "^4.0.0",
-        "webpack-dev-server": "^1.14.0"
+    "build:react:client": {
+      "command": "webpack --quiet --config webpack.client.babel.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
     },
-    "dependencies": {
-        "autoprefixer": "^6.1.2",
-        "babel-core": "^6.2.1",
-        "babel-eslint": "^5.0.0",
-        "babel-loader": "^6.2.0",
-        "babel-plugin-react-require": "^2.1.0",
-        "babel-preset-es2015": "^6.5.0",
-        "babel-preset-react": "^6.5.0",
-        "babel-preset-stage-2": "^6.5.0",
-        "better-npm-run": "0.0.7",
-        "classnames": "^2.2.1",
-        "compression": "^1.6.1",
-        "css-loader": "^0.23.0",
-        "cssnano": "^3.3.2",
-        "express": "^4.13.4",
-        "extract-text-webpack-plugin": "^0.9.1",
-        "file-loader": "^0.8.5",
-        "helmet": "^1.1.0",
-        "html-minifier": "^1.2.0",
-        "normalize.css": "^3.0.3",
-        "npm-run-all": "^1.5.1",
-        "postcss-loader": "^0.8.0",
-        "postcss-scss": "^0.1.3",
-        "precss": "^1.3.0",
-        "react": "^0.14.3",
-        "react-addons-test-utils": "^0.14.7",
-        "react-dom": "^0.14.3",
-        "react-helmet": "^2.3.1",
-        "react-redux": "^4.4.0",
-        "react-router": "^2.0.0",
-        "redux": "^3.0.4",
-        "style-loader": "^0.13.0",
-        "tape": "^4.4.0",
-        "webpack": "^1.12.9"
+    "build:react:server": {
+      "command": "webpack --quiet --config webpack.server.babel.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:express": {
+      "command": "babel server -d dist",
+      "env": {
+        "NODE_ENV": "production"
+      }
     }
+  },
+  "author": "Jared Anderson",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "enzyme": "^2.0.0",
+    "eslint": "^2.1.0",
+    "eslint-plugin-react": "^4.0.0",
+    "webpack-dev-server": "^1.14.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^6.1.2",
+    "babel-core": "^6.2.1",
+    "babel-eslint": "^5.0.0",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-react-require": "^2.1.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "better-npm-run": "0.0.7",
+    "classnames": "^2.2.1",
+    "compression": "^1.6.1",
+    "css-loader": "^0.23.0",
+    "express": "^4.13.4",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.8.5",
+    "helmet": "^1.1.0",
+    "html-minifier": "^1.2.0",
+    "normalize.css": "^3.0.3",
+    "npm-run-all": "^1.5.1",
+    "postcss-cssnext": "^2.4.0",
+    "postcss-loader": "^0.8.0",
+    "react": "^0.14.3",
+    "react-addons-test-utils": "^0.14.7",
+    "react-dom": "^0.14.3",
+    "react-helmet": "^2.3.1",
+    "react-redux": "^4.4.0",
+    "react-router": "^2.0.0",
+    "redux": "^3.0.4",
+    "style-loader": "^0.13.0",
+    "tape": "^4.4.0",
+    "webpack": "^1.12.9"
+  }
 }
