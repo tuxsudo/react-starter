@@ -1,5 +1,4 @@
 import base from './webpack.base.babel.js';
-import fs from 'fs';
 import path from 'path';
 
 
@@ -18,16 +17,14 @@ export default {
 
     target: 'node',
 
-    // keep node_module paths out of the bundle
-    externals: fs.readdirSync(path.resolve(__dirname, 'node_modules'))
-        .concat([
-            'react-dom/server'
-        ])
-        .filter( s=> !/\.css$/.test(s) )
-        .reduce( (ext, mod) => ({
-                ...ext,
-                [mod]: 'commonjs ' + mod
-            }), {}),
+    externals: [
+        'html-minifier',
+        'react-dom',
+        'react',
+        'react-router',
+        'react-redux',
+        'react-helmet'
+    ],
 
     node: {
         __filename: true,
