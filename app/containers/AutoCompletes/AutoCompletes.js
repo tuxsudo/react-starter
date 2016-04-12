@@ -1,39 +1,47 @@
+import {Component} from 'react';
 import { connect } from 'react-redux';
-
 import AutoComplete from '../../components/AutoComplete/AutoComplete.js';
 import DataList from '../../components/DataList/DataList.js';
-import DumbComplete from '../../components/DumbComplete/DumbComplete.js';
-import { findPeople, selectPerson } from '../../actions/people.js';
+import { init } from '../../actions/people.js';
 import Helmet from 'react-helmet';
 
-const AutoCompleteContainer = ({ people = [], filtered = [], q="", dispatch }) => (
-    <div>
-        <Helmet title="3 different AutoCompletes" />
-        <AutoComplete
-            onSelect={console.log.bind(console)} // eslint-disable-line
-            options={people}
-            placeholder="choose a relative..."
-            value="Jared"
-        />
+class AutoCompleteContainer extends Component {
 
-        <hr />
+    static load(store) {
+        return store.dispatch( init() );
+    }
 
-        <DataList
-            onChange={e=>console.log(e.target.value)} // eslint-disable-line
-            options={people}
-        />
+    componentWillMount() {
+        return this.props.dispatch( init() );
+    }
 
-        <hr />
+    render() {
+        const {people} = this.props;
+        // [], filtered = [], q="", dispatch }) =>
+        return (
+            <div>
+                <Helmet title="3 different AutoCompletes" />
+                <AutoComplete
+                    onSelect={console.log.bind(console)} // eslint-disable-line
+                    options={people}
+                    placeholder="choose a relative..."
+                    value="Jared"
+                />
 
-        <DumbComplete
-            options={filtered}
-            value={q}
-            onChange={e => dispatch( findPeople(e.target.value))}
-            onSelect={e => dispatch( selectPerson(e.target.textContent))}
-        />
+                <hr />
 
-    </div>
-);
+                <DataList
+                    onChange={e=>console.log(e.target.value)} // eslint-disable-line
+                    options={people}
+                />
+
+                <hr />
+
+
+            </div>
+        );
+    }
+}
 
 
 

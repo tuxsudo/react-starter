@@ -4,10 +4,10 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 
 import routes from './routes.js';
-import store from './store.js';
+import getStore from './store.js';
 
 render(
-    <Provider store={store}>
+    <Provider store={getStore()}>
         <Router history={browserHistory} routes={routes} />
     </Provider>,
 

@@ -21,11 +21,11 @@ function getPeople() {
     );
 }
 
+export const setPeople = people => ({ type: INIT_PEOPLE, people });
 
+export const findPeople = query => ({ type: FIND_PEOPLE, query });
 
-export const init = () =>
-    getPeople().then( people => ({ type: INIT_PEOPLE, people }));
+export const selectPerson = query => ({type: SELECT_PERSON, query });
 
-export const findPeople = q => ({ type: FIND_PEOPLE, q });
-
-export const selectPerson = q => ({type: SELECT_PERSON, q });
+export const init = () => dispatch =>
+    getPeople().then( people => dispatch(setPeople(people)) );

@@ -4,16 +4,19 @@ import { connect } from 'react-redux';
 import SiteHeader from '../../components/SiteHeader/SiteHeader.js';
 import 'normalize.css';
 import styles from './style.scss';
-import { bootstrap } from '../../actions/bootstrap.js';
+import {init as initNav} from '../../actions/site-nav.js';
+// import { bootstrap } from '../../actions/bootstrap.js';
 
 class App extends Component {
 
+    // make grabbing the nav a blocking action on the server...
+    static load(store) {
+        return store.dispatch( initNav() );
+    }
+
+    // load nav async on the client...
     componentWillMount() {
-        bootstrap()
-            .then(data =>
-                data.forEach(action => this.props.dispatch(action)
-            )
-        );
+        return this.props.dispatch( initNav() );
     }
 
     render() {

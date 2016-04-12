@@ -16,10 +16,10 @@ function getNav() {
     ]);
 }
 
-export function init() {
-    return getNav().then(setNav);
-}
-
 function setNav( nav=[] ) {
     return { type: SET_NAV, nav };
 }
+
+
+export const init = () => dispatch =>
+    getNav().then( n => dispatch( setNav(n)) );
