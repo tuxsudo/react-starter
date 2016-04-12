@@ -3,7 +3,7 @@ import {Component} from 'react';
 import { connect } from 'react-redux';
 import SiteHeader from '../../components/SiteHeader/SiteHeader.js';
 import 'normalize.css';
-import styles from './style.scss';
+import styles from './style.css';
 import {init as initNav} from '../../actions/site-nav.js';
 // import { bootstrap } from '../../actions/bootstrap.js';
 
