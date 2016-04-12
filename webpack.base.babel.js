@@ -7,7 +7,7 @@ export default {
     module: {
         loaders: [
             {
-                test: /\.s?css$/,
+                test: /\.css$/,
                 loader: ExtractTextPlugin.extract(
                     "style-loader",
                     "css-loader?minimize&modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]!postcss-loader"
