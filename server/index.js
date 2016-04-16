@@ -20,6 +20,7 @@ app.get('*', reactHandler);
 // handle any errors
 app.use( (err, req, res, next) => { // eslint-disable-line
     res.status(err.status||500).send("Application Error");
+    console.error(err.status===404?`404 ${req.url}`: err.stack); // eslint-disable-line
 });
 
 var PORT = process.env.PORT || 8080;

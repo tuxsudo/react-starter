@@ -53,7 +53,7 @@ export default (req, res, next) => {
                             { collapseWhitespace: true, removeComments: true, removeAttributeQuotes: true }
                         )
                     );
-                });
+                }).catch(next);
 
 
 
