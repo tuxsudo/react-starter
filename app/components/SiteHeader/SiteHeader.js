@@ -8,7 +8,7 @@ export default ({links = [], className=""}) => (
     <header className={classNames(style.header, className)}>
         <IndexLink to="/" className={style.brand}>
             <img className={style.logo} src={logo} alt="My Brand" />
-            My website
+            <span>My website</span>
         </IndexLink>
         <SiteNav className={style.nav} links={links} />
     </header>

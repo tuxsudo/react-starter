@@ -50,7 +50,7 @@ export default (req, res, next) => {
                     res.send(
                         minify(
                             docTemplate({ ...(Helmet.rewind()), content, initialState }),
-                            { collapseWhitespace: true, removeComments: true, removeAttributeQuotes: true }
+                            { collapseWhitespace: true, removeAttributeQuotes: true }
                         )
                     );
                 }).catch(next);

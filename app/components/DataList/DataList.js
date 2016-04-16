@@ -1,14 +1,16 @@
 import React from 'react';
+import hasher from 'string-hash';
 
 
-function uniqId() {
-    return "dl-".concat( (new Date).toISOString() );
-}
+const uniqId = data => `dl-${hasher(JSON.stringify(data))}`;
+
+
+
 
 
 export default ({options=[], className="", label="", value="", placeholder="", onChange=()=>{} }) => {
 
-    let id = uniqId(),
+    let id = uniqId(options),
         Options = options
             .map( (o, i) => (
                 <option key={i} value={o.value||o}>{o.text||o}</option>
