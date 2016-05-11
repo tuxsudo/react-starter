@@ -1,4 +1,5 @@
 import cssnext from 'postcss-cssnext';
+import cssimport from 'postcss-import';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpack from 'webpack'
 
@@ -46,6 +47,7 @@ export default {
     },
 
     postcss : [
+        cssimport(),
         cssnext()
     ]
 };
