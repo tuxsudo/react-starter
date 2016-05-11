@@ -20,6 +20,11 @@ export default {
             },
 
             {
+                test : /\.json$/,
+                loader  : 'json'
+            },
+
+            {
                 test: /\.(png|jpe?g|gif|svg|mp3|mpe?g)$/,
                 loader: "file-loader?name=assets/[name]-[hash:2].[ext]"
             }

@@ -1,13 +1,5 @@
-const successData = [
-    {
-        href: '/',
-        text: 'Home'
-    },
-    {
-        href: '/auto-completes',
-        text: 'Demo'
-    }
-];
+import successData from './mocks/nav.json';
+
 
 export default function() {
 

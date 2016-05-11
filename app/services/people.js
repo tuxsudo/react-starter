@@ -1,18 +1,4 @@
-const successData = [
-    'Jared Anderson',
-    'Sara Anderson',
-    'Elijah Anderson',
-    'Xander Anderson',
-    'Maxwell Anderson',
-    'Amelia Anderson',
-    'Ivy Anderson',
-    'Grandpa Anderson',
-    'Grandma Anderson',
-    'Grandpa Jensen',
-    'Grandma Jensen',
-    'Grandpa Ross'
-];
-
+import successData from './mocks/people.json';
 
 export default function() {
     // pretend this is grabbed async
