@@ -29,7 +29,8 @@ export default {
         historyApiFallback: true,
         hot: false,
         inline: true,
-        progress: true,
+        progress: false,
+        stats: 'errors-only',
         compress: true
     }
 

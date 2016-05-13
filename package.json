@@ -19,7 +19,7 @@
       }
     },
     "dev": {
-      "command": "webpack-dev-server --config webpack.client.babel.js --progress --colors",
+      "command": "webpack-dev-server --quiet --config webpack.client.babel.js --colors",
       "env": {
         "NODE_ENV": "development"
       }
@@ -70,7 +70,8 @@
     "style-loader": "^0.13.0",
     "tape": "^4.4.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.14.0",
+    "webpack-node-externals": "^1.2.0"
   },
   "dependencies": {
     "better-npm-run": "0.0.8",

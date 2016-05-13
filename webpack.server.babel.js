@@ -1,6 +1,6 @@
 import base from './webpack.base.babel.js';
 import path from 'path';
-
+import nodeExternals from 'webpack-node-externals';
 
 export default {
 
@@ -17,14 +17,9 @@ export default {
 
     target: 'node',
 
-    externals: [
-        'html-minifier',
-        'react-dom',
-        'react',
-        'react-router',
-        'react-redux',
-        'react-helmet'
-    ],
+    externals: [ nodeExternals({
+        whitelist: ['normalize.css']
+    })],
 
     node: {
         __filename: true,
