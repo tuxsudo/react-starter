@@ -3,8 +3,9 @@ import thunk from 'redux-thunk';
 
 import people from './reducers/people.js';
 import nav from './reducers/site-nav.js';
+import {isBrowser} from './env.js';
 
-const isBrowser = typeof window ==="object"
+
 
 // create the master reducer
 const rootReducer = combineReducers({ people, nav });
