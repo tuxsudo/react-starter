@@ -5,7 +5,18 @@ import Helmet from 'react-helmet';
 
 export default ({people=[]}) => (
     <div>
-        <Helmet title="2 different AutoCompletes" />
+        <Helmet title="AutoCompletes" />
+
+        <label>
+            People Dropdown
+            <select>
+                <option>Choose...</option>
+                {people.map( (p, i) => <option key={i}>{p}</option>)}
+            </select>
+        </label>
+
+        <hr />
+
         <AutoComplete
             onSelect={console.log.bind(console)} // eslint-disable-line
             options={people}

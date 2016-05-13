@@ -7,22 +7,7 @@ import Helmet from 'react-helmet';
 import routes from './routes.js';
 import getStore from './store.js';
 import { minify } from 'html-minifier';
-
-
-function resolveAsyncDeps(store, props) {
-
-    const promises = props.components
-        // unwrap component if wrapped by react-redux bindings...
-        .map(component => component.WrappedComponent || component)
-
-        // grab only components with a static `load` method
-        .filter(component => component.load)
-
-        // execute load functions -- they should return a Promise
-        .map(component => component.load(store, props));
-
-    return Promise.all(promises);
-}
+import { resolve } from './lib/ss-resolve';
 
 
 export default (req, res, next) => {
@@ -37,7 +22,7 @@ export default (req, res, next) => {
         } else if (props) {
             const store = getStore();
 
-            resolveAsyncDeps(store, props)
+            resolve(props, store)
                 .then(() => {
                     const initialState = store.getState();
 
