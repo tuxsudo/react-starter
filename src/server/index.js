@@ -9,8 +9,6 @@ import reactHandler from '../app/_server.js';
 // create express app...
 export const app = express();
 
-console.log(__dirname);
-
 // middleware
 app.use(compression());
 app.use(helmet());
