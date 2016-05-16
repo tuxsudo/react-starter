@@ -1,7 +1,9 @@
+import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import compression from 'compression';
 import helmet from 'helmet';
+
 
 // the reactified route-handler from the `app`
 import reactHandler from '../app/_server.js';
@@ -23,6 +25,6 @@ app.use( (err, req, res, next) => { // eslint-disable-line
     console.error(err.status===404?`404 ${req.url}`: err.stack); // eslint-disable-line
 });
 
-var PORT = process.env.PORT || 8080;
+const { PORT } = process.env;
 
 app.listen(PORT, () => console.log('Running on port ' + PORT)); // eslint-disable-line
