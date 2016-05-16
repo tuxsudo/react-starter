@@ -6,29 +6,21 @@ export default {
 
     ...base,
 
-    entry: path.resolve('./server/index.js'),
+    entry: path.resolve('./src/server/index.js'),
 
     output: {
         path: path.join(__dirname, 'dist'),
         filename: "server.js"
     },
 
-
-    // output: {
-    //     filename: 'index.js',
-    //     library: 'index.js',
-    //     libraryTarget: 'commonjs2',
-    //     path: path.join(__dirname, 'server', 'modules', 'react-server-app')
-    // },
-
-    target: 'node',
-
     externals: [ nodeExternals({
         whitelist: ['normalize.css']
     })],
 
+    target: 'node',
+
     node: {
-        __filename: true,
-        __dirname: true
+        __filename: false,
+        __dirname: false
     }
 }

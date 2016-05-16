@@ -5,9 +5,9 @@ import webpack from 'webpack';
 export default {
     ...base,
 
-    entry: "./app/_client.js",
+    entry: "./src/app/_client.js",
     output: {
-        path: path.join(__dirname, 'static'),
+        path: path.join(__dirname, 'dist', 'static'),
         filename: "app.js"
     },
 
@@ -25,7 +25,7 @@ export default {
         ),
 
     devServer: {
-        contentBase: path.join(__dirname, 'static'),
+        contentBase: path.join(__dirname, 'src', 'server', 'static'),
         historyApiFallback: true,
         hot: false,
         inline: true,

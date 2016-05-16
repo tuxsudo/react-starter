@@ -9,10 +9,12 @@ import reactHandler from '../app/_server.js';
 // create express app...
 export const app = express();
 
+console.log(__dirname);
+
 // middleware
 app.use(compression());
 app.use(helmet());
-app.use(express.static(path.join(__dirname, '..', 'static'), {index: false}));
+app.use(express.static(path.join(__dirname, 'static'), {index: false}));
 
 // handle routes via react...
 app.get('*', reactHandler);
