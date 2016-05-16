@@ -6,14 +6,20 @@ export default {
 
     ...base,
 
-    entry: path.resolve('./app/_server.js'),
+    entry: path.resolve('./server/index.js'),
 
     output: {
-        filename: 'index.js',
-        library: 'index.js',
-        libraryTarget: 'commonjs2',
-        path: path.join(__dirname, 'server', 'modules', 'react-server-app')
+        path: path.join(__dirname, 'dist'),
+        filename: "server.js"
     },
+
+
+    // output: {
+    //     filename: 'index.js',
+    //     library: 'index.js',
+    //     libraryTarget: 'commonjs2',
+    //     path: path.join(__dirname, 'server', 'modules', 'react-server-app')
+    // },
 
     target: 'node',
 

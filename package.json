@@ -5,39 +5,26 @@
   "main": "index.js",
   "scripts": {
     "dev": "better-npm-run dev",
-    "build": "npm-run-all -p build:react:* && npm run build:express",
-    "start": "better-npm-run start",
-    "build:express": "better-npm-run build:express",
-    "build:react:client": "better-npm-run build:react:client",
-    "build:react:server": "better-npm-run build:react:server"
+    "build": "npm-run-all -p build:*",
+    "start": "node dist/server.js",
+    "build:client": "better-npm-run build:client",
+    "build:server": "better-npm-run build:server"
   },
   "betterScripts": {
-    "start": {
-      "command": "node dist/index.js",
-      "env": {
-        "NODE_ENV": "production"
-      }
-    },
     "dev": {
       "command": "webpack-dev-server --quiet --config webpack.client.babel.js --colors",
       "env": {
         "NODE_ENV": "development"
       }
     },
-    "build:react:client": {
+    "build:client": {
       "command": "webpack --quiet --config webpack.client.babel.js",
       "env": {
         "NODE_ENV": "production"
       }
     },
-    "build:react:server": {
+    "build:server": {
       "command": "webpack --quiet --config webpack.server.babel.js",
-      "env": {
-        "NODE_ENV": "production"
-      }
-    },
-    "build:express": {
-      "command": "babel server -d dist",
       "env": {
         "NODE_ENV": "production"
       }

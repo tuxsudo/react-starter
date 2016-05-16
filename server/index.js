@@ -4,7 +4,7 @@ import compression from 'compression';
 import helmet from 'helmet';
 
 // this module is built by npm script...
-import reactHandler from './modules/react-server-app';
+import reactHandler from '../app/_server.js';
 
 // create express app...
 export const app = express();
