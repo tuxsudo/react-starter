@@ -1,8 +1,8 @@
-import successData from './mocks/people.json';
+import {DEV_ENDPOINT_BASE} from '../env.js';
 
-export default function() {
-    // pretend this is grabbed async
-    return new Promise( (resolve) => {
-        setTimeout( ()=>resolve(successData), Math.random()*3000 );
-    });
-}
+
+export default () => (
+    fetch(`${DEV_ENDPOINT_BASE}/api/people`)
+        .then(response =>
+            response.ok ? response.json() : Promise.reject(response) )
+);

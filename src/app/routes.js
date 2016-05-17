@@ -6,7 +6,7 @@ import People from './containers/people.js';
 const routes = (
     <Route path="/" component={App} >
         <IndexRoute component={Home} />
-        <Route path="/auto-completes" component={People} />
+        <Route path="/demo" component={People} />
     </Route>
 );
 

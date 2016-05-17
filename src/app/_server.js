@@ -9,6 +9,8 @@ import getStore from './store.js';
 import { minify } from 'html-minifier';
 import { resolve } from './lib/ss-resolve';
 
+import {DEV_ENDPOINT_BASE} from './env.js';
+
 
 export default (req, res, next) => {
     match({ routes, location: req.url }, (err, redirect, props) => {
@@ -34,7 +36,12 @@ export default (req, res, next) => {
 
                     res.send(
                         minify(
-                            docTemplate({ ...(Helmet.rewind()), content, initialState }),
+                            docTemplate({
+                                ...(Helmet.rewind()),
+                                content,
+                                initialState,
+                                env: {DEV_ENDPOINT_BASE}
+                            }),
                             { collapseWhitespace: true, removeAttributeQuotes: true }
                         )
                     );
