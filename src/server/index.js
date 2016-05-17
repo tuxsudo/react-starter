@@ -14,7 +14,7 @@ export const app = express();
 // middleware
 app.use(compression());
 app.use(helmet());
-app.use(express.static(path.join(__dirname, 'static'), {index: false}));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 
 // handle routes via react...
 app.get('*', reactHandler);

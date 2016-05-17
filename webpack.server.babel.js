@@ -10,7 +10,8 @@ export default {
 
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: "server.js"
+        filename: "server.js",
+        publicPath: '/static/'
     },
 
     externals: [ nodeExternals({

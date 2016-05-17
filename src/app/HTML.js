@@ -6,14 +6,14 @@ export default ({title="", meta="", links="", content="", initialState={} }) => 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${meta}
         ${links}
-        <link href=/app.css rel=stylesheet>
+        <link href=/static/app.css rel=stylesheet>
 
     </head>
 
     <body>
         <div id=app>${content}</div>
         <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)} </script>
-        <script type=text/javascript src=/app.js charset=utf-8 async></script>
+        <script type=text/javascript src=/static/app.js charset=utf-8 async></script>
     </body>
 </html>
 `;

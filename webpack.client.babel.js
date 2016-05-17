@@ -1,6 +1,9 @@
+import 'dotenv/config';
 import base from './webpack.base.babel.js';
 import path from 'path';
 import webpack from 'webpack';
+
+const {WDS_PORT, PORT} = process.env;
 
 export default {
     ...base,
@@ -8,7 +11,8 @@ export default {
     entry: "./src/app/_client.js",
     output: {
         path: path.join(__dirname, 'dist', 'static'),
-        filename: "app.js"
+        filename: "app.js",
+        publicPath: '/static/'
     },
 
     plugins: base.plugins
@@ -25,13 +29,16 @@ export default {
         ),
 
     devServer: {
-        contentBase: path.join(__dirname, 'src', 'server', 'static'),
+        publicPath: '/static/',
+        contentBase: `http://localhost:${PORT}/static`,
         historyApiFallback: true,
-        hot: false,
-        inline: true,
         progress: false,
         stats: 'errors-only',
-        compress: true
+        compress: true,
+        port: WDS_PORT,
+        proxy: {
+            "*": `http://localhost:${PORT}`
+        }
     }
 
 };

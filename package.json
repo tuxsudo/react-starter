@@ -4,28 +4,37 @@
   "description": "An Isomorphic React Starter",
   "main": "index.js",
   "scripts": {
-    "dev": "better-npm-run dev",
+    "predev": "npm run build",
+    "dev": "npm-run-all -p dev:*",
     "build": "npm-run-all -p build:*",
     "start": "node dist/server.js",
     "lint": "eslint src",
     "build:client": "better-npm-run build:client",
-    "build:server": "better-npm-run build:server"
+    "build:server": "better-npm-run build:server",
+    "dev:client": "better-npm-run dev:client",
+    "dev:server": "better-npm-run dev:server"
   },
   "betterScripts": {
-    "dev": {
-      "command": "webpack-dev-server --quiet --config webpack.client.babel.js --colors",
+    "dev:client": {
+      "command": "webpack-dev-server --quiet --no-info --hot --inline --history-api-fallback --config webpack.client.babel.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "dev:server": {
+      "command": "node dist/server.js",
       "env": {
         "NODE_ENV": "development"
       }
     },
     "build:client": {
-      "command": "webpack --quiet --config webpack.client.babel.js",
+      "command": "webpack --quiet --no-info --config webpack.client.babel.js",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "build:server": {
-      "command": "webpack --quiet --config webpack.server.babel.js",
+      "command": "webpack --quiet --no-info --config webpack.server.babel.js",
       "env": {
         "NODE_ENV": "production"
       }

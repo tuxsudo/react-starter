@@ -29,7 +29,7 @@ export default {
 
             {
                 test: /\.(png|jpe?g|gif|svg|mp3|mpe?g)$/,
-                loader: "file-loader?name=assets/[name]-[hash:2].[ext]"
+                loader: "file-loader?name=static/assets/[name]-[hash:2].[ext]"
             }
 
         ]
