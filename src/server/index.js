@@ -1,8 +1,11 @@
 import 'dotenv/config';
+import 'isomorphic-fetch';
 import express from 'express';
 import path from 'path';
 import compression from 'compression';
 import helmet from 'helmet';
+import {api} from './routes';
+
 
 
 // the reactified route-handler from the `app`
@@ -15,6 +18,8 @@ export const app = express();
 app.use(compression());
 app.use(helmet());
 app.use('/static', express.static(path.join(__dirname, 'static')));
+
+app.use('/api', api);
 
 // handle routes via react...
 app.get('*', reactHandler);
