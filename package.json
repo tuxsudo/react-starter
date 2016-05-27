@@ -9,6 +9,7 @@
     "build": "npm-run-all -p build:*",
     "start": "node dist/server.js",
     "lint": "eslint src",
+    "components": "start-storybook -p 9999",
     "build:client": "better-npm-run build:client",
     "build:server": "better-npm-run build:server",
     "dev:client": "better-npm-run dev:client",
@@ -43,6 +44,7 @@
   "author": "Jared Anderson",
   "license": "MIT",
   "devDependencies": {
+    "@kadira/storybook": "^1.28.1",
     "autoprefixer": "^6.1.2",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.2.1",
