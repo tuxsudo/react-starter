@@ -49,7 +49,7 @@ export default {
     },
 
     postcss : [
-        cssimport(),
+        cssimport({path: `${__dirname}/src/app`}),
         cssnext()
     ]
 };
