@@ -1,0 +1,72 @@
+@import 'variables.css';
+
+.hero {
+    align-items: flex-end;
+    background-color: var(--lightgray, lightgray);
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: column nowrap;
+    min-height: 25vw;
+    margin: 0;
+    padding: 5em 1em 1em;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+
+    & > * {
+        z-index: 1;
+    }
+
+    &.clickable {
+        cursor: pointer;
+    }
+}
+
+
+
+.overlay {
+    background-color: #0006;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+
+    &.light {
+        background-color: #0003;
+    }
+
+    &.dark {
+        background-color: #0009;
+    }
+}
+
+.title {
+    color: var(--white, white);
+    font: 2em/1.25 normal var(--serif, serif);
+    text-align: right;
+    margin: 0;
+
+    @media (--l-min) {
+        font-size: 3em;
+    }
+}
+
+.subtitle {
+    display: block;
+    font-family: var(--sans, sans);
+    font-size: .5em;
+    margin-top: .25em;
+
+    @media (--l-min) {
+        margin-top: 0;
+    }
+
+}
+
+.action {
+    margin: 1em 0;
+}
