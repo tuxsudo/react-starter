@@ -1,0 +1,39 @@
+@import 'variables.css';
+
+.list {
+    counter-reset: olist-counter;
+    margin: 0;
+
+}
+
+.item {
+    align-items: center;
+    display: flex;
+    list-style: none;
+    padding: 1em 0;
+
+    &:before,
+    &:after {
+        font-size: 3em;
+        padding: 0 1em;
+
+    }
+
+    &:nth-child(even) {
+        justify-content: flex-end;
+    }
+
+
+    &:nth-child(odd):before {
+        content: counter(olist-counter, decimal);
+        counter-increment: olist-counter;
+    }
+
+    &:nth-child(even):after {
+        content: counter(olist-counter, decimal);
+        counter-increment: olist-counter;
+    }
+
+
+
+}

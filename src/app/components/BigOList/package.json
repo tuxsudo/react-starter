@@ -1,0 +1,5 @@
+{
+    "name": "BigOList",
+    "main": "BigOList.js",
+    "storybook": "BigOListStory.js"
+}
