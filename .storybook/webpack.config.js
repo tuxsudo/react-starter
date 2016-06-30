@@ -1,11 +1,27 @@
 const cssnext = require('postcss-cssnext');
 const cssimport = require('postcss-import');
 const path = require('path');
+const whiteLister = require('./whitelister.js');
+
 
 
 module.exports = {
     module: {
         loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader?cacheDirectory',
+                exclude: whiteLister([
+                    'react',
+                    'compression',
+                    'cors',
+                    'dotenv',
+                    'express',
+                    'html-minifier',
+                    'npm-run-all',
+                    'string-hash'
+                ])
+            },
             {
                 test: /\.css?$/,
                 loaders: ['style', 'css-loader?modules&importLoaders=1&localIdentName=[local]-[hash:base64:5]', 'postcss-loader'],
