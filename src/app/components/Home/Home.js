@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 const Home = () => (
@@ -16,4 +15,4 @@ const Home = () => (
 
 
 
-export default connect()(Home);
+export default Home;
