@@ -1,8 +1,8 @@
-import {DEV_ENDPOINT_BASE} from '../env.js';
+import {API_HOST} from '../env.js';
 
 
 export default () => (
-    fetch(`${DEV_ENDPOINT_BASE}/api/nav`)
+    fetch(`${API_HOST}/api/nav`)
         .then(response =>
             response.ok ? response.json() : Promise.reject(response) )
 );
