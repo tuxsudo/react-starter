@@ -9,7 +9,7 @@ import getStore from './store.js';
 import { minify } from 'html-minifier';
 import { resolve } from './lib/ss-resolve';
 
-import {DEV_ENDPOINT_BASE} from './env.js';
+import {DEV_ENDPOINT_BASE, APP_WEB_BASE_PATH} from './env.js';
 
 
 export default (req, res, next) => {
@@ -40,7 +40,8 @@ export default (req, res, next) => {
                                 ...(Helmet.rewind()),
                                 content,
                                 initialState,
-                                env: {DEV_ENDPOINT_BASE}
+                                env: {DEV_ENDPOINT_BASE, APP_WEB_BASE_PATH},
+                                base_path: APP_WEB_BASE_PATH
                             }),
                             { collapseWhitespace: true, removeAttributeQuotes: true }
                         )

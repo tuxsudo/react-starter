@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import cssnext from 'postcss-cssnext';
 import cssimport from 'postcss-import';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';

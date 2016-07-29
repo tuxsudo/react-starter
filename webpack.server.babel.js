@@ -2,6 +2,8 @@ import base from './webpack.base.babel.js';
 import path from 'path';
 import nodeExternals from 'webpack-node-externals';
 
+const {APP_WEB_BASE_PATH} = process.env;
+
 export default {
 
     ...base,
@@ -11,7 +13,7 @@ export default {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: "server.js",
-        publicPath: '/static/'
+        publicPath: `${APP_WEB_BASE_PATH}/`
     },
 
     externals: [ nodeExternals({

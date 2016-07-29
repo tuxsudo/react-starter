@@ -1,9 +1,8 @@
-import 'dotenv/config';
 import base from './webpack.base.babel.js';
 import path from 'path';
 import webpack from 'webpack';
 
-const {WDS_PORT, PORT} = process.env;
+const {WDS_PORT, PORT, APP_WEB_BASE_PATH} = process.env;
 
 export default {
     ...base,
@@ -12,7 +11,7 @@ export default {
     output: {
         path: path.join(__dirname, 'dist', 'static'),
         filename: "app.js",
-        publicPath: '/static/'
+        publicPath: `${APP_WEB_BASE_PATH}/`
     },
 
     plugins: base.plugins
@@ -29,7 +28,7 @@ export default {
         ),
 
     devServer: {
-        publicPath: '/static/',
+        publicPath: `${APP_WEB_BASE_PATH}/static`,
         contentBase: `http://localhost:${PORT}/static`,
         historyApiFallback: true,
         progress: false,

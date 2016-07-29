@@ -3,11 +3,11 @@ import 'normalize.css';
 import styles from './style.css';
 
 
-export default ({children, nav}) => (
+export default ({homelink, children, nav}) => (
 
     <div className={styles.app}>
 
-        <SiteHeader className={styles.header} links={nav}  />
+        <SiteHeader className={styles.header} links={nav} homelink={homelink} />
 
         <div className={styles.wrapper}>
             <main className={styles.main}>{children}</main>

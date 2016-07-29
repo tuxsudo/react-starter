@@ -33,7 +33,10 @@ const SSResolvedComponent = wrap(LazyApp, resolveOnServer)
 // https://github.com/reactjs/react-redux/blob/master/docs/api.md
 
 // argument 1 of react-redux `connect` maps store data to props
-const mapStateToProps = ({nav}) => ({nav});
+const mapStateToProps = ({nav}) => ({
+    nav,
+    homelink: (nav.find(n=>n.rel==="home")||{}).href
+});
 
 // argument 2 of react-redux `connect` maps actions to dispatch to props
 const mapDispatchToProps = (dispatch) => ({

@@ -3,14 +3,17 @@ import cors from 'cors';
 
 export const router = express.Router();
 
+const {APP_WEB_BASE_PATH} = process.env;
+
 router.get('/nav', cors(), (req, res) => {
     res.send([
         {
-            "href": "/",
-            "text": "Home"
+            "href": `${APP_WEB_BASE_PATH}`,
+            "text": "Home",
+            "rel": "home"
         },
         {
-            "href": "/demo",
+            "href": `${APP_WEB_BASE_PATH}/demo`,
             "text": "Demo"
         }
     ]);
