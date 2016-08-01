@@ -34,7 +34,7 @@ export default (req, res, next) => {
                         </Provider>
                     );
 
-                    res.send(
+                    res.status(initialState.requestStatus||200).send(
                         minify(
                             docTemplate({
                                 ...(Helmet.rewind()),
@@ -47,8 +47,6 @@ export default (req, res, next) => {
                         )
                     );
                 }).catch(next);
-
-
 
         } else {
             res.status(404).send('Not Found')

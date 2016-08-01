@@ -15,6 +15,10 @@ router.get('/nav', cors(), (req, res) => {
         {
             "href": `${APP_WEB_BASE_PATH}/demo`,
             "text": "Demo"
+        },
+        {
+            "href": `${APP_WEB_BASE_PATH}/not-found`,
+            "text": "404"
         }
     ]);
 });
