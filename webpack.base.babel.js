@@ -2,7 +2,11 @@ import 'dotenv/config';
 import cssnext from 'postcss-cssnext';
 import cssimport from 'postcss-import';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import webpack from 'webpack'
+import webpack from 'webpack';
+import Dashboard from 'webpack-dashboard';
+import DashboardPlugin from 'webpack-dashboard/plugin';
+
+let dashboard = new Dashboard();
 
 export default {
 
@@ -41,8 +45,15 @@ export default {
         new ExtractTextPlugin("app.css"),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': `"${process.env.NODE_ENV||"production"}"`
-        })
+        }),
+        new DashboardPlugin(dashboard.setData)
     ],
+
+    stats: {
+        children: false,
+        assets: false,
+        timings: false
+    },
 
 
     cssLoader: {

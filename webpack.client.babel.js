@@ -37,7 +37,7 @@ export default {
         port: WDS_PORT,
         proxy: {
             "*": `http://localhost:${PORT}`
-        }
+        },
     }
 
 };
