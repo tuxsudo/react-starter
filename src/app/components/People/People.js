@@ -5,8 +5,7 @@ import Helmet from 'react-helmet';
 
 export default ({people=[]}) => (
     <div>
-        <Helmet title="AutoCompletes" />
-
+    
         <label>
             People Dropdown
             <select>

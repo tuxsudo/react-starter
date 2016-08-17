@@ -2,10 +2,10 @@ import Home from '../components/Home';
 import { connect } from 'react-redux';
 import { addMeta } from '../lib/add-meta';
 
-const metafiedHome = addMeta(Home);
+const metaHome = addMeta(Home);
 
 const mergeAllTheProps = (state, actions, own) => ({
-    title: "Homepage, yo!",
+    metaTitle: "Homepage, yo!",
     meta: [
         {"name": "description", "content": "A React Starter"},
         {"property": "og:type", "content": "article"}
@@ -13,4 +13,4 @@ const mergeAllTheProps = (state, actions, own) => ({
 });
 
 
-export default connect(mergeAllTheProps)(metafiedHome);
+export default connect(mergeAllTheProps)(metaHome);
