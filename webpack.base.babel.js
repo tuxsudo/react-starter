@@ -50,10 +50,10 @@ export default {
     ],
 
     stats: {
-        children: false
+        children: false,
+        assets: false,
+        timings: false
     },
-
-    quiet: true,
 
 
     cssLoader: {
