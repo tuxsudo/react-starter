@@ -28,7 +28,7 @@ export default {
         ),
 
     devServer: {
-        publicPath: `${APP_WEB_BASE_PATH}/static`,
+        publicPath: '/static/',
         contentBase: `http://localhost:${PORT}/static`,
         historyApiFallback: true,
         progress: false,
@@ -36,7 +36,7 @@ export default {
         compress: true,
         port: WDS_PORT,
         proxy: {
-            "*": `http://localhost:${PORT}`
+            "**": `http://localhost:${PORT}`
         }
     }
 
