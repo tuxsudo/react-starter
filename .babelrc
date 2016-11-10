@@ -2,7 +2,8 @@
     "presets": [
       "es2015",
       "stage-2",
-      "react"
+      "react",
+      "latest"
     ],
     "plugins": [
         "react-require"
