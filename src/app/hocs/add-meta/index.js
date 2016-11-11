@@ -1,8 +1,10 @@
 import Helmet from 'react-helmet';
 
-export const addMeta = Component => ({meta=[], metaTitle="", ...props}) => (
+export const addMeta = Component => ({ meta: {title, tags}, ...props}) => (
     <div>
-        <Helmet title={metaTitle} meta={meta} />
+        <Helmet title={title} meta={tags} />
         <Component {...props} />
     </div>
-)
+);
+
+export default addMeta;

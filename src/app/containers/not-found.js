@@ -16,11 +16,13 @@ const mergeAllTheProps = (state, actions, own) => ({
     ...state, ...actions, ...own,
     title: "Page Not Found",
     subtitle: "Sorry Not Sorry",
-    metaTitle: "Page Not Found",
-    meta: [
-        {"name": "description", "content": "This page was not found or an error occured"},
-        {"property": "og:type", "content": "article"}
-    ]
+    meta: {
+        title: "Page Not Found",
+        tags: [
+            {"name": "description", "content": "This page was not found or an error occured"},
+            {"property": "og:type", "content": "article"}
+        ]
+    }
 })
 
 export default connect(

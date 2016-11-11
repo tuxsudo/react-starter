@@ -4,13 +4,15 @@ import { addMeta } from '../hocs/add-meta';
 
 const metaHome = addMeta(Home);
 
-const mergeAllTheProps = (state, actions, own) => ({
-    metaTitle: "Homepage, yo!",
-    meta: [
-        {"name": "description", "content": "A React Starter"},
-        {"property": "og:type", "content": "article"}
-    ]
+const mapStateToProps = () => ({
+    meta: {
+        title: "Homepage, yo!",
+        tags: [
+            {"name": "description", "content": "A React Starter"},
+            {"property": "og:type", "content": "article"}
+        ]
+    }
 });
 
 
-export default connect(mergeAllTheProps)(metaHome);
+export default connect(mapStateToProps)(metaHome);
