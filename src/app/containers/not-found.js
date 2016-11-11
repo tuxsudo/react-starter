@@ -1,5 +1,5 @@
 import NotFound from '../components/Error';
-import {set404} from '../actions/request-status';
+import {setHttpResponseCode} from '../actions/system';
 import { connect } from 'react-redux';
 import {wrap} from '../hocs/ss-resolve';
 import { addMeta } from '../hocs/add-meta';
@@ -9,7 +9,7 @@ const metaNotFound = addMeta(NotFound);
 // on server when mounted, dispatch action which sets status to 404 in store.
 export const RouteComponent = wrap(
     metaNotFound,
-    (props, store) => Promise.resolve(store.dispatch(set404()))
+    (props, store) => Promise.resolve(store.dispatch(setHttpResponseCode(404)))
 );
 
 const mergeAllTheProps = (state, actions, own) => ({

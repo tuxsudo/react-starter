@@ -8,6 +8,7 @@ import routes from './routes.js';
 import getStore from './store.js';
 import { minify } from 'html-minifier';
 import { resolve } from './hocs/ss-resolve';
+import {selectHTTPResponseCode} from './store.js';
 
 import * as env from './env.js';
 
@@ -27,6 +28,7 @@ export default (req, res, next) => {
             resolve(props, store)
                 .then(() => {
                     const initialState = store.getState();
+                    const httpStatus = selectHTTPResponseCode(initialState);
 
                     const content = renderToString(
                         <Provider store={store}>
@@ -34,7 +36,7 @@ export default (req, res, next) => {
                         </Provider>
                     );
 
-                    res.status(initialState.requestStatus||200).send(
+                    res.status(httpStatus).send(
                         minify(
                             docTemplate({
                                 ...(Helmet.rewind()),

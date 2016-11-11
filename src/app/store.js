@@ -5,9 +5,25 @@ import isBrowser from 'is-in-browser';
 import {ALLOW_REDUX_DEV_TOOLS} from './env.js';
 
 import * as reducers from './reducers';
+import * as fromSystem from './reducers/system.js';
 
 // create the master reducer
 const rootReducer = combineReducers(reducers);
+
+
+// Reexport scoped selectors here:
+export const selectHTTPResponseCode = (state) => (
+    fromSystem.selectHTTPResponseCode(state.system)
+);
+
+export const selectAllApplicationErrors = (state) => (
+    fromSystem.selectAllApplicationErrors(state.system)
+);
+
+export const selectApplicationError = (state, id) => (
+    fromSystem.selectApplicationError(state.system, id)
+);
+
 
 
 // determine initial state
