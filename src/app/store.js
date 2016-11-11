@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import {isBrowser} from './env.js';
+import isBrowser from 'is-in-browser';
 
 import * as reducers from './reducers';
 

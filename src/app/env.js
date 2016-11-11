@@ -1,4 +1,4 @@
-export const isBrowser = typeof window === "object";
+import isBrowser from 'is-in-browser';
 
 //Grab variables from process.env or window
 export const {

@@ -80,6 +80,7 @@
     "express": "^4.13.4",
     "helmet": "^1.1.0",
     "html-minifier": "^1.2.0",
+    "is-in-browser": "^1.0.2",
     "isomorphic-fetch": "^2.2.1",
     "join-classnames": "^1.0.0",
     "npm-run-all": "^1.5.1",
