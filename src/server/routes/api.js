@@ -13,41 +13,11 @@ router.get('/nav', cors(), (req, res) => {
             "rel": "home"
         },
         {
-            "href": `${APP_WEB_BASE_PATH}/demo`,
-            "text": "Demo"
-        },
-        {
             "href": `${APP_WEB_BASE_PATH}/not-found`,
             "text": "404"
         }
     ]);
 });
-
-router.get('/people', cors(), (req, res) => {
-    res.send([
-        "Jared",
-        "Sara",
-        "Elijah",
-        "Xander",
-        "Maxwell",
-        "Amelia",
-        "Ivy",
-        "Jennie",
-        "Stephanie",
-        "Hillary",
-        "Cameron",
-        "Carey",
-        "Ashlee",
-        "Alyssa",
-        "Tom",
-        "Lynn",
-        "Ross",
-        "Danette",
-        "Claigh",
-        "Wendy"
-    ]);
-});
-
 
 
 export default router;
