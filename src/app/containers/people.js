@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { init } from '../actions/people.js';
 import People from '../components/People';
-import mountLoad from '../lib/mount-load';
-import {wrap} from '../lib/ss-resolve';
+import mountLoad from '../hocs/mount-load';
+import {wrap} from '../hocs/ss-resolve';
 import {isBrowser} from '../env.js';
-import { addMeta } from '../lib/add-meta';
+import { addMeta } from '../hocs/add-meta';
 
 const MetaPeople = addMeta(People);
 const LazyPeople = mountLoad(MetaPeople);

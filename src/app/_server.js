@@ -7,9 +7,9 @@ import Helmet from 'react-helmet';
 import routes from './routes.js';
 import getStore from './store.js';
 import { minify } from 'html-minifier';
-import { resolve } from './lib/ss-resolve';
+import { resolve } from './hocs/ss-resolve';
 
-import {API_HOST, APP_WEB_BASE_PATH} from './env.js';
+import { API_HOST, APP_WEB_BASE_PATH } from './env.js';
 
 
 export default (req, res, next) => {

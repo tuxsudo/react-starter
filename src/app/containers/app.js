@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { init as initNav } from '../actions/site-nav.js';
 import AppLayout from '../components/AppLayout';
-import mountLoad from '../lib/mount-load';
-import { wrap } from '../lib/ss-resolve';
+import mountLoad from '../hocs/mount-load';
+import { wrap } from '../hocs/ss-resolve';
 
 
 // Inject Async Data Loading...

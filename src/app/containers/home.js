@@ -1,6 +1,6 @@
 import Home from '../components/Home';
 import { connect } from 'react-redux';
-import { addMeta } from '../lib/add-meta';
+import { addMeta } from '../hocs/add-meta';
 
 const metaHome = addMeta(Home);
 

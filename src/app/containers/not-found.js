@@ -1,8 +1,8 @@
 import NotFound from '../components/Error';
-import {wrap} from '../lib/ss-resolve';
 import {set404} from '../actions/request-status';
 import { connect } from 'react-redux';
-import { addMeta } from '../lib/add-meta';
+import {wrap} from '../hocs/ss-resolve';
+import { addMeta } from '../hocs/add-meta';
 
 const metaNotFound = addMeta(NotFound);
 
