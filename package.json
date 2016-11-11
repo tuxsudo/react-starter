@@ -74,7 +74,6 @@
   },
   "dependencies": {
     "better-npm-run": "0.0.8",
-    "classnames": "^2.2.1",
     "compression": "^1.6.1",
     "cors": "^2.7.1",
     "dotenv": "^2.0.0",
@@ -82,6 +81,7 @@
     "helmet": "^1.1.0",
     "html-minifier": "^1.2.0",
     "isomorphic-fetch": "^2.2.1",
+    "join-classnames": "^1.0.0",
     "npm-run-all": "^1.5.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",

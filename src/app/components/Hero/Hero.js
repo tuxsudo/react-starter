@@ -1,5 +1,5 @@
 import styles from './style.css';
-import classes from 'classnames';
+import classes from 'join-classnames';
 
 export const Hero = ({title, subtitle, bgSrc, overlay=false, href, onClick, className}) => (
     <a

@@ -1,5 +1,5 @@
 import styles from './BigOList.css';
-import classes from 'classnames';
+import classes from 'join-classnames';
 import {Children as childUtil} from 'react';
 
 export const BigOList = ({children, className}) => (

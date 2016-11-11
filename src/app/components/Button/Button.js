@@ -1,5 +1,5 @@
 import styles from './Button.css';
-import classes from 'classnames';
+import classes from 'join-classnames';
 
 
 const determineEmphasis = emphasis => {
