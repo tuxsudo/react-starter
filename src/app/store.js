@@ -4,14 +4,18 @@ import isBrowser from 'is-in-browser';
 
 import {ALLOW_REDUX_DEV_TOOLS} from './env.js';
 
-import * as reducers from './reducers';
-import * as fromSystem from './reducers/system.js';
+import system, * as fromSystem from './reducers/system.js';
+import nav, * as fromSiteNav from './reducers/site-nav.js';
 
 // create the master reducer
-const rootReducer = combineReducers(reducers);
+const rootReducer = combineReducers({nav, system});
 
 
 // Reexport scoped selectors here:
+export const selectSiteNav = (state) => (
+    fromSiteNav.selectSiteNav(state.nav)
+);
+
 export const selectHTTPResponseCode = (state) => (
     fromSystem.selectHTTPResponseCode(state.system)
 );

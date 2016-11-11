@@ -3,6 +3,7 @@ import { init as initNav } from '../actions/site-nav.js';
 import AppLayout from '../components/AppLayout';
 import mountLoad from '../hocs/mount-load';
 import { wrap } from '../hocs/ss-resolve';
+import {selectSiteNav} from '../store.js';
 
 
 // Inject Async Data Loading...
@@ -33,10 +34,13 @@ const SSResolvedComponent = wrap(LazyApp, resolveOnServer)
 // https://github.com/reactjs/react-redux/blob/master/docs/api.md
 
 // argument 1 of react-redux `connect` maps store data to props
-const mapStateToProps = ({nav}) => ({
-    nav,
-    homelink: (nav.find(n=>n.rel==="home")||{}).href
-});
+const mapStateToProps = (state) => {
+    const nav = selectSiteNav(state);
+    return {
+        nav,
+        homelink: (nav.find(n=>n.rel==="home")||{}).href
+    }
+};
 
 // argument 2 of react-redux `connect` maps actions to dispatch to props
 const mapDispatchToProps = (dispatch) => ({
