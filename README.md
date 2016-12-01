@@ -3,7 +3,6 @@
 A project starter for universalmorphic React/Redux apps
 
 
-
 ## Features
 
 *   [React](https://facebook.github.io/react/): THE component-based view library.
@@ -37,3 +36,7 @@ A project starter for universalmorphic React/Redux apps
 1.  The React / Redux app is found in [src/app](./src/app)
 1.  The production Express.js server is found in [src/server](./src/server)
 1.  Component stories (for the component dev environment) is found in [.storybook/config.js](./.storybook/config.js)
+
+
+
+NOTE: Make sure you are using npm version 3 or higher.
