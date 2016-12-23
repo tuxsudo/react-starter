@@ -20,12 +20,12 @@ export default {
 
             {
                 test : /\.js$/,
-                loader  : 'babel'
+                loader  : 'babel-loader'
             },
 
             {
                 test : /\.json$/,
-                loader  : 'json'
+                loader  : 'json-loader'
             },
 
             {
