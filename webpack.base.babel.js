@@ -19,7 +19,7 @@ export default {
             },
 
             {
-                test : /\.jsx?$/,
+                test : /\.js$/,
                 loader  : 'babel-loader'
             },
 
