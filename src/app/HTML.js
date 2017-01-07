@@ -12,6 +12,7 @@ export default ({title="", meta="", links="", content="", initialState={}, env={
 
     <body>
         <div id=app>${content}</div>
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch&unknown=polyfill"></script>
         <script>
             window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
             window.__APP_ENV_VARS__ = ${JSON.stringify(env)};
