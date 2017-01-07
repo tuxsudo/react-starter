@@ -19,11 +19,14 @@ storiesOf('StoryBook', module).add('welcome', () => (
             </div>
             <div>
                 <h2>Write a Component Story</h2>
-                <p>Component stories are just a bunch of usage examples of a component. Learn <a href="https://github.com/kadirahq/react-storybook/blob/master/docs/writing_stories.md" target="_blank">how to write stories.</a></p>
+                <p>
+                    Component stories are just a bunch of usage examples of a component.
+                    Learn <a href="https://getstorybook.io/docs" target="_blank">how to write stories.</a>
+                </p>
             </div>
             <div>
                 <h2>Add Story to the StoryBook Config</h2>
-                <p>add the the appropriate `require` statement in the config file found in `./.storybook/config.js`</p>
+                <p>if you name your story file like, `component.story.js`, you can skip this step. othewise, add the the appropriate `require` statement in the config file found in `./.storybook/config.js`. </p>
             </div>
         </BigOList>
 
