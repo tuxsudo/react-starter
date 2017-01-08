@@ -1,13 +1,13 @@
 {
   "name": "react-starter",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "An Isomorphic React Starter",
   "main": "index.js",
   "scripts": {
     "predev": "npm run build",
     "dev": "npm-run-all -p dev:*",
     "build": "npm-run-all -p build:*",
-    "start": "node dist/server.js",
+    "start": "node dist/server/server.js",
     "lint": "eslint src",
     "components": "start-storybook -p 9999",
     "build:client": "better-npm-run build:client",
@@ -17,25 +17,25 @@
   },
   "betterScripts": {
     "dev:client": {
-      "command": "webpack-dev-server --quiet --no-info --hot --inline --history-api-fallback --config webpack.client.babel.js",
+      "command": "webpack-dev-server --hot --inline --history-api-fallback --config webpack.client.babel.js",
       "env": {
         "NODE_ENV": "development"
       }
     },
     "dev:server": {
-      "command": "node dist/server.js",
+      "command": "node dist/server/server.js",
       "env": {
         "NODE_ENV": "development"
       }
     },
     "build:client": {
-      "command": "webpack --quiet --no-info --config webpack.client.babel.js",
+      "command": "webpack --config webpack.client.babel.js",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "build:server": {
-      "command": "webpack --quiet --no-info --config webpack.server.babel.js",
+      "command": "webpack --config webpack.server.babel.js",
       "env": {
         "NODE_ENV": "production"
       }
@@ -45,31 +45,33 @@
   "license": "MIT",
   "devDependencies": {
     "@kadira/storybook": "^1.28.1",
-    "autoprefixer": "^6.1.2",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.2.1",
     "babel-eslint": "^6.0.2",
-    "babel-loader": "^6.2.0",
+    "babel-loader": "^6.2.10",
     "babel-plugin-react-require": "^2.1.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-2": "^6.5.0",
-    "css-loader": "^0.23.0",
+    "css-loader": "^0.26.1",
     "enzyme": "^2.0.0",
     "eslint": "^2.7.0",
     "eslint-plugin-react": "^4.0.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.8.5",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "file-loader": "^0.9.0",
     "json-loader": "^0.5.4",
     "normalize.css": "^4.1.1",
     "postcss-cssnext": "^2.4.0",
-    "postcss-import": "^8.1.2",
-    "postcss-loader": "^0.8.0",
+    "postcss-import": "^9.0.0",
+    "postcss-load-config": "^1.0.0",
+    "postcss-loader": "^1.2.1",
+    "postcss-smart-import": "^0.6.6",
     "react-addons-test-utils": "^15.0.1",
-    "style-loader": "^0.13.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "style-loader": "^0.13.1",
     "tape": "^4.4.0",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
+    "webpack": "2.2.0-rc.3",
+    "webpack-dev-server": "2.2.0-rc.0",
     "webpack-node-externals": "^1.2.0"
   },
   "dependencies": {

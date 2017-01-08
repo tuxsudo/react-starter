@@ -17,6 +17,8 @@ export default ({title="", meta="", links="", content="", initialState={}, env={
             window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
             window.__APP_ENV_VARS__ = ${JSON.stringify(env)};
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js"></script>
         <script type=text/javascript src="${base_path}/static/app.js" charset=utf-8 async></script>
     </body>
 </html>

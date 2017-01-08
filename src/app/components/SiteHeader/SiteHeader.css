@@ -1,17 +1,22 @@
-@import 'variables.css';
+@import '../../variables.css';
 
 .header {
     align-items: center;
-    background: #bada55;
+    background: var(--red);
     color: #133;
     display: flex;
     justify-content: space-between;
     padding-bottom: 1em;
     padding-top: 1em;
+
+    @media(--l-min) {
+        padding-bottom: 1.5rem;
+        padding-top: 1.5rem;
+    }
 }
 
 .brand {
-    color: #0a0a0a;
+    color: var(--black);
     text-decoration: none;
 }
 

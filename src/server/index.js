@@ -18,7 +18,8 @@ const {APP_WEB_BASE_PATH} = process.env;
 // middleware
 app.use(compression());
 app.use(helmet());
-app.use(`${APP_WEB_BASE_PATH}/static`, express.static(path.join(__dirname, 'static')));
+// app.use(`${APP_WEB_BASE_PATH}/static`, express.static(path.join(__dirname, 'files')));
+app.use(`${APP_WEB_BASE_PATH}/static`, express.static(path.join(__dirname, '..', 'client')));
 
 app.use(`${APP_WEB_BASE_PATH}/api`, api);
 

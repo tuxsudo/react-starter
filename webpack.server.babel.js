@@ -8,10 +8,10 @@ export default {
 
     ...base,
 
-    entry: path.resolve('./src/server/index.js'),
+    entry: './src/server/index.js',
 
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'dist', 'server'),
         filename: "server.js",
         publicPath: `${APP_WEB_BASE_PATH}/`
     },

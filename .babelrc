@@ -1,10 +1,11 @@
 {
     "presets": [
-      "latest",
+      ["latest", { "modules": false }],
       "stage-2",
-      "react"
+      "react",
     ],
     "plugins": [
-        "react-require"
+        "react-require",
+        "react-hot-loader/babel"
     ]
 }
