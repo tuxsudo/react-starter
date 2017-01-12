@@ -69,8 +69,7 @@
     "style-loader": "^0.13.0",
     "tape": "^4.4.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
-    "webpack-node-externals": "^1.2.0"
+    "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
     "better-npm-run": "0.0.8",

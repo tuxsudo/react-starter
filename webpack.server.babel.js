@@ -1,6 +1,5 @@
 import base from './webpack.base.babel.js';
 import path from 'path';
-import nodeExternals from 'webpack-node-externals';
 
 const {APP_WEB_BASE_PATH} = process.env;
 
@@ -16,9 +15,27 @@ export default {
         publicPath: `${APP_WEB_BASE_PATH}/`
     },
 
-    externals: [ nodeExternals({
-        whitelist: ['normalize.css']
-    })],
+    externals: [
+        "better-npm-run",
+        "compression",
+        "cors",
+        "dotenv",
+        "express",
+        "helmet",
+        "html-minifier",
+        "is-in-browser",
+        "isomorphic-fetch",
+        "join-classnames",
+        "npm-run-all",
+        "react",
+        "react-dom",
+        "react-helmet",
+        "react-redux",
+        "react-router",
+        "redux",
+        "redux-thunk",
+        "string-hash"
+    ].reduce((obj, name) => ({...obj, [name]: `commonjs ${name}`})),
 
     target: 'node',
 
