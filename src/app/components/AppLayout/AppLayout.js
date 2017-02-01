@@ -1,4 +1,4 @@
-import SiteHeader from '../SiteHeader/SiteHeader.js';
+import SiteHeader from '../SiteHeader/SiteHeader';
 import 'normalize.css';
 import styles from './style.css';
 
