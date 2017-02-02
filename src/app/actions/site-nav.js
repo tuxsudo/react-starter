@@ -3,7 +3,7 @@ import getNav from '../services/site-nav.js';
 
 
 
-function setNav( nav=[] ) {
+export const setNav = ( nav=[] ) => {
     return { type: RECEIVE_SITE_NAVIGATION, nav };
 }
 
