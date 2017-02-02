@@ -1,5 +1,5 @@
 import { storiesOf } from '@kadira/storybook';
-import BigOList from './BigOList.js';
+import BigOList from './BigOList';
 
 storiesOf('BigOList', module)
 

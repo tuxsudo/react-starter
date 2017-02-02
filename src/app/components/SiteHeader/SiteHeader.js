@@ -1,5 +1,5 @@
 import style from './SiteHeader.css';
-import SiteNav from '../SiteNav/SiteNav.js';
+import SiteNav from '../SiteNav/SiteNav';
 import classes from 'join-classnames';
 import logo from './logo-placeholder.svg';
 import {IndexLink} from 'react-router';
