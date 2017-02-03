@@ -3,13 +3,14 @@ import thunk from 'redux-thunk';
 import isBrowser from 'is-in-browser';
 import { routerReducer as routing } from 'react-router-redux';
 
-import {ALLOW_REDUX_DEV_TOOLS} from './env.js';
+import {ALLOW_REDUX_DEV_TOOLS} from './env';
 
-import system, * as fromSystem from './reducers/system.js';
-import nav, * as fromSiteNav from './reducers/site-nav.js';
+import system, * as fromSystem from './reducers/system';
+import nav, * as fromSiteNav from './reducers/site-nav';
+import pageMeta, * as fromPageMeta from './reducers/page-meta';
 
 // create the master reducer
-const rootReducer = combineReducers({nav, system, routing});
+const rootReducer = combineReducers({nav, system, routing, pageMeta});
 
 
 // Reexport scoped selectors here:
@@ -27,6 +28,18 @@ export const selectAllApplicationErrors = (state) => (
 
 export const selectApplicationError = (state, id) => (
     fromSystem.selectApplicationError(state.system, id)
+);
+
+export const selectPageMeta = (state) => (
+  fromPageMeta.selectPageMeta(state.pageMeta)
+);
+
+export const selectPageTitle = (state) => (
+  fromPageMeta.selectPageTitle(state.pageMeta)
+);
+
+export const selectMetaTags = (state) => (
+  fromPageMeta.selectMetaTags(state.pageMeta)
 );
 
 
