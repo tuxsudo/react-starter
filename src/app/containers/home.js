@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import Home from '../components/Home';
+import LandingView from '../views/LandingView';
 import { connect } from 'react-redux';
 import { setPageMeta } from '../actions/page-meta';
 
@@ -33,7 +33,7 @@ class HomeContainer extends Component {
   }
 
   render() {
-    return <Home {...this.props} />
+    return <LandingView {...this.props} />
   }
 
 }

@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { init as initNav } from '../actions/site-nav.js';
-import AppLayout from '../components/AppLayout';
+import AppView from '../views/AppView';
 import { selectSiteNav, selectPageMeta } from '../store.js';
 
 
@@ -44,10 +44,10 @@ class AppContainer extends Component {
   render() {
     const {children, title, meta, ...props} = this.props;
     return (
-      <AppLayout {...props}>
+      <AppView {...props}>
         <Helmet title={title} meta={meta} />
         {children}
-      </AppLayout>
+      </AppView>
     );
   }
 

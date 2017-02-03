@@ -1,5 +1,5 @@
-import SiteHeader from '../SiteHeader/SiteHeader';
 import 'normalize.css';
+import SiteHeader from '../../components/SiteHeader';
 import styles from './style.css';
 
 
