@@ -16,7 +16,11 @@ const storeConnector = connect(
   undefined,
   {setPageMeta},
   (store, actions) => ({
-    init: () => actions.setPageMeta(pageMeta)
+    init: () => actions.setPageMeta(pageMeta),
+    title: "React/Redux Starter",
+    subtitle: "for isounimorphic applications",
+    hero: "http://lorempixel.com/1200/500/",
+    cta: "https://github.com/tuxsudo/react-starter"
   })
 );
 
