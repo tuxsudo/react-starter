@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import LandingView from '../views/LandingView';
 import { connect } from 'react-redux';
 import { setPageMeta } from '../actions/page-meta';

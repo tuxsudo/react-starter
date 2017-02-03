@@ -1,3 +1,4 @@
+import React from 'react';
 import style from './SiteHeader.css';
 import SiteNav from '../SiteNav/SiteNav';
 import classes from 'join-classnames';

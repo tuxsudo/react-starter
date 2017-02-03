@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Error.css';
 
 const NotFound = ({title="Error...", subtitle, children}) => (

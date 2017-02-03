@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from './Button';
 import styles from './Button.css';
 import test from 'tape';

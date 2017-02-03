@@ -1,4 +1,5 @@
-import Hero from '../../components/Hero'
+import React from 'react';
+import Hero from '../../components/Hero';
 import Button from '../../components/Button';
 import styles from './style.css';
 

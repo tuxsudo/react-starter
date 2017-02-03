@@ -1,10 +1,11 @@
+import React from 'react';
 import styles from './style.css';
 import classes from 'join-classnames';
 
 export const Hero = ({title, subtitle, bgSrc, overlay=false, href, onClick, className}) => (
     <a
         className={classes(styles.hero, className, (href || onClick) && styles.clickable)}
-        style={{backgroundImage: bgSrc && `url(${bgSrc})`||""}}
+        style={{backgroundImage: bgSrc ? `url(${bgSrc})`:""}}
         onClick={onClick}
         {...(href ? { href } : {})}
     >
