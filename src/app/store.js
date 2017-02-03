@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import isBrowser from 'is-in-browser';
+import { routerReducer as routing } from 'react-router-redux';
 
 import {ALLOW_REDUX_DEV_TOOLS} from './env.js';
 
@@ -8,7 +9,7 @@ import system, * as fromSystem from './reducers/system.js';
 import nav, * as fromSiteNav from './reducers/site-nav.js';
 
 // create the master reducer
-const rootReducer = combineReducers({nav, system});
+const rootReducer = combineReducers({nav, system, routing});
 
 
 // Reexport scoped selectors here:
