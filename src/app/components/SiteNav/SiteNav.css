@@ -1,11 +1,18 @@
+@import 'variables.css';
+
 .nav {
     display: flex;
     justify-content: space-between;
 }
 
 .link {
+    color: var(--white);
     display: block;
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     &:not(:last-child) {
         margin-right: 1em;

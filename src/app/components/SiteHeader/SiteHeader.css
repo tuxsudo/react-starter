@@ -2,8 +2,8 @@
 
 .header {
     align-items: center;
-    background: #bada55;
-    color: #133;
+    background: var(--blue, green);
+    color: var(--white, black);
     display: flex;
     justify-content: space-between;
     padding-bottom: 1em;
@@ -11,11 +11,12 @@
 }
 
 .brand {
-    color: #0a0a0a;
+    color: var(--white);
     text-decoration: none;
 }
 
 .logo {
+    fill: var(--white);
     height: 2em;
     margin-right: .5em;
     vertical-align: middle;

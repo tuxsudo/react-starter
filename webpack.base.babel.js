@@ -49,8 +49,8 @@ export default {
         modules: true
     },
 
-    postcss : [
-        cssimport({path: `${__dirname}/src/app`}),
+    postcss : (webpack) => [
+        cssimport({ path: `${__dirname}/src/app`, addDependencyTo: webpack }),
         cssnext()
     ]
 };
