@@ -1,4 +1,5 @@
-import Button from './Button.js';
+import React from 'react';
+import Button from './Button';
 import styles from './Button.css';
 import test from 'tape';
 import {spy} from 'sinon';

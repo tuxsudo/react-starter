@@ -1,32 +1,44 @@
-import NotFound from '../components/Error';
-import {setHttpResponseCode} from '../actions/system';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {wrap} from '../hocs/ss-resolve';
-import { addMeta } from '../hocs/add-meta';
+import { setHttpResponseCode } from '../actions/system';
+import { setPageMeta } from '../actions/page-meta';
+import NotFound from '../components/Error';
 
-const metaNotFound = addMeta(NotFound);
+const pageMeta = {
+    title: "Page Not Found :(",
+    tags: [
+        {"name": "description", "content": "This page was not found or an error occured"},
+        {"property": "og:type", "content": "article"}
+    ]
+};
 
-// on server when mounted, dispatch action which sets status to 404 in store.
-export const RouteComponent = wrap(
-    metaNotFound,
-    (props, store) => Promise.resolve(store.dispatch(setHttpResponseCode(404)))
+const storeConnector = connect(
+  undefined,
+  {setPageMeta},
+  (state, actions) => ({
+    init: () => actions.setPageMeta(pageMeta),
+    title: "Page Not Found",
+    subtitle: "Sorry Not Sorry"
+  })
 );
 
-const mergeAllTheProps = (state, actions, own) => ({
-    ...state, ...actions, ...own,
-    title: "Page Not Found",
-    subtitle: "Sorry Not Sorry",
-    meta: {
-        title: "Page Not Found",
-        tags: [
-            {"name": "description", "content": "This page was not found or an error occured"},
-            {"property": "og:type", "content": "article"}
-        ]
-    }
-})
+class NotFoundContainer extends Component {
 
-export default connect(
-    undefined,
-    undefined,
-    mergeAllTheProps
-)(RouteComponent);
+  static onServer(props, store) {
+    return Promise.all([
+      store.dispatch(setPageMeta(pageMeta)),
+      store.dispatch(setHttpResponseCode(404))
+    ]);
+  }
+
+  componentDidMount() {
+    this.props.init();
+  }
+
+  render() {
+    return <NotFound {...this.props} />
+  }
+
+}
+
+export default storeConnector(NotFoundContainer);

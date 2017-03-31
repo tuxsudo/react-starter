@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './SiteNav.css';
 import { Link } from 'react-router';
 import classes from 'join-classnames';

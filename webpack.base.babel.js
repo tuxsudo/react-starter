@@ -7,6 +7,11 @@ import webpack from 'webpack'
 export default {
 
     module: {
+
+        devtool: 'source-map',
+
+        debug: true,
+        
         loaders: [
             {
                 test: /\.css$/,
@@ -50,7 +55,7 @@ export default {
     },
 
     postcss : [
-        cssimport({path: `${__dirname}/src/app`}),
+        cssimport({ path: `${__dirname}/src/app` }),
         cssnext()
     ]
 };
