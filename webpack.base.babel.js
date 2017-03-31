@@ -7,6 +7,11 @@ import webpack from 'webpack'
 export default {
 
     module: {
+
+        devtool: 'source-map',
+
+        debug: true,
+        
         loaders: [
             {
                 test: /\.css$/,
