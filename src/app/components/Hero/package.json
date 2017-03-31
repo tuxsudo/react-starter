@@ -1,4 +1,4 @@
 {
-    "main": "Hero.js",
-    "storybook": "HeroStory.js"
+    "name": "Hero.js",
+    "main": "Hero.js"
 }
