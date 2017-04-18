@@ -3,6 +3,8 @@ import cssnext from 'postcss-cssnext';
 import cssimport from 'postcss-import';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpack from 'webpack'
+import HappyPack from 'happypack';
+
 
 export default {
 
@@ -25,7 +27,7 @@ export default {
 
             {
                 test : /\.js$/,
-                loader  : 'babel-loader'
+                loaders: [ 'happypack/loader' ] // replaced... loader  : 'babel-loader'
             },
 
             {
@@ -46,7 +48,13 @@ export default {
         new ExtractTextPlugin("app.css"),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': `"${process.env.NODE_ENV||"production"}"`
-        })
+        }),
+        new HappyPack({
+            // loaders is the only required parameter:
+            loaders: [ 'babel?presets[]=es2015' ]
+
+            // customize as needed, see Configuration below
+        }),
     ],
 
 

@@ -66,6 +66,7 @@
     "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.10.0",
+    "happypack": "^3.0.3",
     "json-loader": "^0.5.4",
     "normalize.css": "^5.0.0",
     "postcss-cssnext": "^2.4.0",
