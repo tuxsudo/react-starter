@@ -12,14 +12,26 @@ const pageMeta = {
     ]
 };
 
-const storeConnector = connect(
-  undefined,
-  {setPageMeta},
-  (state, actions) => ({
+// takes values from the redux store and maps them to props
+const mapStateToProps = state => ({
+  //propName: state.data.specificData
+});
+
+// binds the result of action creators to redux dispatch, wrapped in callable functions
+const bindActionsToDispatch = dispatch => ({
+  setPageMeta: (meta) => { dispatch(setPageMeta(meta)) }
+});
+
+const mergeAllProps = (state, actions) => ({
     init: () => actions.setPageMeta(pageMeta),
     title: "Page Not Found",
     subtitle: "Sorry Not Sorry"
   })
+
+const storeConnector = connect(
+  mapStateToProps, 
+  bindActionsToDispatch, 
+  mergeAllProps
 );
 
 class NotFoundContainer extends Component {
