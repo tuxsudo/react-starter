@@ -17,15 +17,13 @@ const mapStateToProps = (state) => {
     }
 };
 
-
 // argument 2 of react-redux `connect` maps actions to dispatch to props
-const mapDispatchToProps = {initNav};
-
+const bindActionsToDispatch = ({initNav});
 
 // create the store connector HoC
 const storeConnector = connect(
   mapStateToProps,
-  mapDispatchToProps
+  bindActionsToDispatch
 );
 
 // create the container
