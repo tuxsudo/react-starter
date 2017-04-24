@@ -50,10 +50,7 @@ export default {
             'process.env.NODE_ENV': `"${process.env.NODE_ENV||"production"}"`
         }),
         new HappyPack({
-            // loaders is the only required parameter:
-            loaders: [ 'babel?presets[]=es2015' ]
-
-            // customize as needed, see Configuration below
+            loaders: [ 'babel' ]
         }),
     ],
 
