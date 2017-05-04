@@ -28,6 +28,7 @@ export default (req, res, next) => {
             resolve(props, store)
                 .then(() => {
                     const initialState = store.getState();
+                    const opaqueStateString = new Buffer(JSON.stringify(initialState), "binary").toString("base64");
                     const httpStatus = selectHTTPResponseCode(initialState);
 
                     const content = renderToString(
@@ -41,7 +42,7 @@ export default (req, res, next) => {
                             docTemplate({
                                 ...(Helmet.rewind()),
                                 content,
-                                initialState,
+                                initialState: opaqueStateString,
                                 env,
                                 base_path: env.APP_WEB_BASE_PATH
                             }),

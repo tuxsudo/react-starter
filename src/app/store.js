@@ -45,10 +45,9 @@ export const selectMetaTags = (state) => (
 
 
 // determine initial state
-const initialState = isBrowser
-  ? window.__INITIAL_STATE__ || {}
+const initialState = isBrowser && window.__INITIAL_STATE__ 
+  ? JSON.parse(atob(window.__INITIAL_STATE__))
   : {};
-
 
 const reduxMiddleware = compose(
     applyMiddleware(thunk),
