@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
 import Helmet from 'react-helmet';
+import {encode} from '@tuxsudo/b64';
 import routes from './routes.js';
 import getStore from './store.js';
 import { minify } from 'html-minifier';
@@ -28,8 +29,8 @@ export default (req, res, next) => {
             resolve(props, store)
                 .then(() => {
                     const initialState = store.getState();
-                    const opaqueStateString = new Buffer(JSON.stringify(initialState), "binary").toString("base64");
                     const httpStatus = selectHTTPResponseCode(initialState);
+                    const opaqueStateString = encode(JSON.stringify(initialState));
 
                     const content = renderToString(
                         <Provider store={store}>

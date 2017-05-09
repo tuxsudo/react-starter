@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import isBrowser from 'is-in-browser';
+import {decode} from '@tuxsudo/b64';
 import { routerReducer as routing } from 'react-router-redux';
 
 import {ALLOW_REDUX_DEV_TOOLS} from './env';
@@ -46,7 +47,7 @@ export const selectMetaTags = (state) => (
 
 // determine initial state
 const initialState = isBrowser && window.__INITIAL_STATE__ 
-  ? JSON.parse(atob(window.__INITIAL_STATE__))
+  ? JSON.parse( decode(window.__INITIAL_STATE__) )
   : {};
 
 const reduxMiddleware = compose(
