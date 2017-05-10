@@ -4,6 +4,7 @@ import express from 'express';
 import path from 'path';
 import compression from 'compression';
 import helmet from 'helmet';
+import bodyParser from 'body-parser';
 import {api} from './routes';
 
 // the reactified route-handler from the `app`
@@ -19,6 +20,8 @@ const {APP_WEB_BASE_PATH} = process.env;
 app.use(compression());
 app.use(helmet());
 app.use(`${APP_WEB_BASE_PATH}/static`, express.static(path.join(__dirname, 'static')));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 app.use(`${APP_WEB_BASE_PATH}/api`, api);
 
