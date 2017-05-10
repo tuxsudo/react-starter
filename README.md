@@ -35,8 +35,13 @@ A project starter for universalmorphic React/Redux apps
 
 1.  The React / Redux app is found in [src/app](./src/app)
 1.  The production Express.js server is found in [src/server](./src/server)
-1.  Component stories (for the component dev environment) is found in [.storybook/config.js](./.storybook/config.js)
+1.  Component stories (for the component dev environment) are found in [.storybook/config.js](./.storybook/config.js)
 
+## FAQ
 
-
-NOTE: Make sure you are using npm version 3 or higher.
+1.  Do I need a particular version of `npm`?
+    -  Please use `npm` version 3 or higher.
+1.  Why do you have `package.json` files in your Component directories? 
+    -  Placing a `package.json` file with a proper `main` property allows you to `import` that code by referencing only the parent folder. Example: `import LandingView from '../views/LandingView';`. This gives you the flexibility of refactoring the Component without changing the consuming `import`s.
+1.  My editor/linter claims the `package.json` files in the Component directories are missing the `name` and `version` properties.
+    -  According to the specification, `name` and `version` are both required properties of a `package.json` file. However, they are not necessary in this context because we are not publishing the Components separate from the project. We chose to have minimal `package.json` files. Please feel free to add the missing values if this bothers you or your linter enough that you or your linter can't get past it.

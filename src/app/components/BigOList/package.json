@@ -1,5 +1,3 @@
 {
-    "name": "BigOList",
-    "main": "BigOList.js",
-    "storybook": "BigOListStory.js"
+    "main": "BigOList.js"
 }

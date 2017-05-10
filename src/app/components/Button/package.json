@@ -1,5 +1,3 @@
 {
-    "name": "Button",
-    "main": "Button.js",
-    "storybook": "ButtonStory.js"
+    "main": "Button.js"
 }
