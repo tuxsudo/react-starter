@@ -9,7 +9,7 @@ export default ({homelink="/", links = [], className=""}) => (
     <header className={classes(style.header, className)}>
         <IndexLink to={homelink} className={style.brand}>
             <img className={style.logo} src={logo} alt="My Brand" />
-            <span>My website</span>
+            <span>React Starter</span>
         </IndexLink>
         <SiteNav className={style.nav} links={links} />
     </header>
