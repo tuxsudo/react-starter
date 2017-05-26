@@ -20,7 +20,7 @@
   },
   "betterScripts": {
     "dev:client": {
-      "command": "webpack-dev-server --quiet --no-info --hot --inline --history-api-fallback --config webpack.client.babel.js",
+      "command": "webpack-dev-server -d --quiet --no-info --hot --inline --history-api-fallback --config webpack.client.babel.js",
       "env": {
         "NODE_ENV": "development"
       }
