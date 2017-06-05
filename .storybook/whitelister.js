@@ -22,13 +22,13 @@ const whitelistresolver = (path, ignore, depth) => {
         .filter(x=>x)
         .filter(isUnique);
 
-    const packages = Object.keys(require(path).dependencies)
+    const packages = Object.keys(require(path).dependencies||{})
         .filter( createIgnoreFilter(normalizeArray(ignore)) );
 
 
     // grab the denormalized list of child deps (may be nested with dupes)
     const uncleanChildren = (
-        packages.map(d => Object.keys(require(`${d}/package.json`).dependencies))
+        packages.map(d => Object.keys(require(`${d}/package.json`).dependencies||{}))
     );
 
     // create a new ignore list from parent
