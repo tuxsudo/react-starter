@@ -13,6 +13,8 @@
     "lint": "eslint src",
     "components": "start-storybook -p 9999",
     "create:component": "componentinator",
+    "create:view": "componentinator type=view",
+    "create:container": "componentinator type=container",
     "build:client": "better-npm-run build:client",
     "build:server": "better-npm-run build:server",
     "dev:client": "better-npm-run dev:client",
