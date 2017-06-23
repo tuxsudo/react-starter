@@ -40,7 +40,7 @@ module.exports = {
 
             {
                 test: /\.(png|jpe?g|gif|svg|mp3|mpe?g)$/,
-                loader: "null-loader?name=static/assets/[name]-[hash:2].[ext]"
+                loader: "file-loader?name=static/assets/[name]-[hash:2].[ext]"
             }
 
         ]
