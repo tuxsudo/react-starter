@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SiteNav.css';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import classes from 'join-classnames';
 
 export default ({links=[], className=""}) => (
