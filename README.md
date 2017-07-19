@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/mdjasper/react-starter/badge.svg?branch=master)](https://coveralls.io/r/mdjasper/react-starter?branch=master)
+
 # React/Redux Project Starter
 
 A project starter for universalmorphic React/Redux apps
