@@ -1,9 +1,7 @@
 module.exports = {
   "collectCoverage": false,
   "collectCoverageFrom": [
-    "**/*.{js,jsx}",
-    "!**/node_modules/**",
-    "!**/dist/**"
+    "src/**/*.{js,jsx}"
   ],
   "moduleFileExtensions": [
     "js",
