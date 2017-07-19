@@ -1,3 +1,7 @@
+https://travis-ci.org/mdjasper/react-starter.svg?branch=master
+
+[![Build Status](https://travis-ci.org/mdjasper/react-starter.svg?branch=master)](https://travis-ci.org/mdjasper/react-starter.svg?branch=master)
+
 [![Coverage Status](https://coveralls.io/repos/mdjasper/react-starter/badge.svg?branch=master)](https://coveralls.io/r/mdjasper/react-starter?branch=master)
 
 # React/Redux Project Starter
