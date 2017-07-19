@@ -1,82 +1,39 @@
 import React from 'react';
 import Button from './Button';
 import styles from './Button.css';
-import test from 'tape';
 import {spy} from 'sinon';
 import { shallow } from 'enzyme';
 
 
-test('<Button />', t => {
+test('<Button />', () => {
+    expect(shallow(<Button value="Go!"/>).text()==="Go!").toBeTruthy();
 
+    expect(shallow(<Button />).text()==="Submit").toBeTruthy();
 
-    t.ok(
-        shallow(<Button value="Go!"/>).text()==="Go!",
-        "Has prop `value`"
-    );
+    expect(shallow(<Button type="submit"/>).prop('type')==="submit").toBeTruthy();
 
-    t.ok(
-        shallow(<Button />).text()==="Submit",
-        `Default value="Submit"`
-    );
+    expect(shallow(<Button />).prop('type')==="button").toBeTruthy();
 
-    t.ok(
-        shallow(<Button type="submit"/>).prop('type')==="submit",
-        "Has prop `type`"
-    );
+    expect(shallow(<Button emphasis="primary" />).hasClass(styles.primary)).toBeTruthy();
 
-    t.ok(
-        shallow(<Button />).prop('type')==="button",
-        `Default type="button"`
-    );
+    expect(shallow(<Button />).hasClass(styles.primary)).toBeTruthy();
 
-    t.ok(
-        shallow(<Button emphasis="primary" />).hasClass(styles.primary),
-        "Has prop `emphasis`"
-    );
+    expect(shallow(<Button emphasis={false} />).hasClass(styles.secondary)).toBeTruthy();
 
-    t.ok(
-        shallow(<Button />).hasClass(styles.primary),
-        `Default emphasis="primary"`
-    );
+    expect(shallow(<Button emphasis="success" />).hasClass(styles.success)).toBeTruthy();
 
-    t.ok(
-        shallow(<Button emphasis={false} />).hasClass(styles.secondary),
-        "Accepts emphasis={false}"
-    );
+    expect(shallow(<Button emphasis="error" />).hasClass(styles.error)).toBeTruthy();
 
-    t.ok(
-        shallow(<Button emphasis="success" />).hasClass(styles.success),
-        `Accepts emphasis="success"`
-    );
+    expect(shallow(<Button emphasis="warn" />).hasClass(styles.warn)).toBeTruthy();
 
-    t.ok(
-        shallow(<Button emphasis="error" />).hasClass(styles.error),
-        `Accepts emphasis="error"`
-    );
+    expect(shallow(<Button className="myClass" />).hasClass("myClass")).toBeTruthy();
 
-    t.ok(
-        shallow(<Button emphasis="warn" />).hasClass(styles.warn),
-        `Accepts emphasis="warn"`
-    );
-
-    t.ok(
-        shallow(<Button className="myClass" />).hasClass("myClass"),
-        "Respects prop `className`"
-    );
-
-    t.ok(
-        shallow(<Button disabled />).prop('disabled')===true,
-        "Respects prop `disabled`"
-    );
+    expect(shallow(<Button disabled />).prop('disabled')===true).toBeTruthy();
 
 
     const clickHandler = spy();
     shallow(<Button onClick={clickHandler} />).simulate('click');
-    t.ok(
-        clickHandler.callCount===1,
-        "Respects prop `onClick`"
-    );
+    expect(clickHandler.callCount===1).toBeTruthy();
 
-    t.end();
-
+    expect(3).toBe(3)
 });
