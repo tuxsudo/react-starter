@@ -5,7 +5,7 @@ import { setPageMeta } from '../actions/page-meta';
 
 const pageMeta = {
   title: "Homepage, yo!!",
-  tags: [
+  meta: [
       {"name": "description", "content": "A React Starter"},
       {"property": "og:type", "content": "article"}
   ]
