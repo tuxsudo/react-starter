@@ -1,5 +1,5 @@
-import { setNav } from './site-nav.js';
-import { RECEIVE_SITE_NAVIGATION } from '../reducers/site-nav.js';
+import { setNav } from '../site-nav.js';
+import { RECEIVE_SITE_NAVIGATION } from '../../reducers/site-nav.js';
 
 test('Actions setNav test', () => {
     expect( setNav(['foo', 'bar', 'ray']) )

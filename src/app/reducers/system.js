@@ -11,7 +11,7 @@ export const RECEIVE_LOADING_START = "RECEIVE_LOADING_START";
 export const RECEIVE_LOADING_END = "RECEIVE_LOADING_END";
 
 
-const httpResponse = (state = 200, { type, payload: httpCode } ) => {
+export const httpResponse = (state = 200, { type, payload: httpCode } ) => {
     switch(type) {
 
         case RECEIVE_HTTP_RESPONSE_CODE: {
@@ -28,7 +28,7 @@ const httpResponse = (state = 200, { type, payload: httpCode } ) => {
     }
 };
 
-const errors = (state = {}, {type, payload}) => {
+export const errors = (state = {}, {type, payload}) => {
     switch(type) {
         case RECEIVE_APPLICATION_ERROR_RESET: {
             return {};
@@ -54,7 +54,7 @@ const errors = (state = {}, {type, payload}) => {
     }
 }
 
-const working = (state = false, {type}) => {
+export const working = (state = false, {type}) => {
     switch(type) {
         case RECEIVE_LOADING_START: {
             return true;
