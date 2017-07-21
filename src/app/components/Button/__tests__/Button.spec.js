@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from './Button';
-import styles from './Button.css';
+import Button from '../Button';
+import styles from '../Button.css';
 import {spy} from 'sinon';
 import { shallow } from 'enzyme';
 
