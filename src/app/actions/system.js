@@ -19,9 +19,9 @@ export const resetApplicationErrors = () => ({
     type: RECEIVE_APPLICATION_ERROR_RESET
 });
 
-export const addApplicationError = ({id, title, description, date}) => ({
+export const addApplicationError = ({id, title, details, date}) => ({
     type: RECEIVE_APPLICATION_ERROR,
-    payload: {id, title, description, date}
+    payload: {id, title, details, date}
 });
 
 export const removeApplicationError = ({id}) => ({

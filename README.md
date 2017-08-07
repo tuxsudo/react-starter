@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/mdjasper/react-starter.svg?branch=master)](https://travis-ci.org/mdjasper/react-starter.svg?branch=master)
+
+[![Coverage Status](https://coveralls.io/repos/github/mdjasper/react-starter/badge.svg?branch=master)](https://coveralls.io/github/mdjasper/react-starter?branch=master)
+
 # React/Redux Project Starter
 
 A project starter for universalmorphic React/Redux apps
@@ -17,7 +21,7 @@ A project starter for universalmorphic React/Redux apps
 *   [CSS Modules](https://github.com/css-modules/css-modules): private name spaces for css classes.
 *   [CSSNext](http://cssnext.io/): future CSS today.
 *   [React StoryBook](https://github.com/kadirahq/react-storybook): a component authoring sandbox. also component functional testing .
-*   [Enzyme](https://github.com/airbnb/enzyme) & [Tape](https://github.com/substack/tape): unit testing
+*   [Jest](https://facebook.github.io/jest/): unit testing and coverage reporting
 *   [Eslint](http://eslint.org/): JS linting.
 
 

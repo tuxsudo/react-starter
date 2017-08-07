@@ -6,7 +6,7 @@ import NotFound from '../components/Error';
 
 const pageMeta = {
     title: "Page Not Found :(",
-    tags: [
+    meta: [
         {"name": "description", "content": "This page was not found or an error occured"},
         {"property": "og:type", "content": "article"}
     ]
