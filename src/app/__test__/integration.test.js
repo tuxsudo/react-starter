@@ -6,9 +6,7 @@ import { setHttpResponseCode } from '../actions/system'
 const store = Store()
 
 test('store exists', () => {
-  it('is a function', () => {
-    expect(typeof store).toBe('function')  
-  })
+    expect(typeof store).toBe('object')  
 })
 
 test('nav action → store',  done => {
